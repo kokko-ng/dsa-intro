@@ -1,0 +1,11 @@
+# Core dependencies
+jupyter>=1.0.0
+notebook>=7.0.0
+ipykernel>=6.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-timeout>=2.2.0
+
+# Display & formatting
+ipython>=8.0.0
