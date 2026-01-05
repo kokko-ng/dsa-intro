@@ -1,6 +1,7 @@
 """
 DSA Checker - A helper for validating Data Structures & Algorithms exercises.
 """
+
 from .checker import check
 
 __all__ = ["check"]

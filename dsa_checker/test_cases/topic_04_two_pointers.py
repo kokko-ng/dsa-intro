@@ -1,11 +1,16 @@
 """
 Topic 04: Two Pointers & Sliding Window
 """
+
 from ..types import TestCasesDict
 
 TOPIC_04_TESTS: TestCasesDict = {
     "valid_palindrome": [
-        {"args": ["A man, a plan, a canal: Panama"], "expected": True, "name": "classic palindrome"},
+        {
+            "args": ["A man, a plan, a canal: Panama"],
+            "expected": True,
+            "name": "classic palindrome",
+        },
         {"args": ["race a car"], "expected": False, "name": "not palindrome"},
         {"args": [" "], "expected": True, "name": "space only"},
         {"args": [""], "expected": True, "name": "empty string"},
@@ -23,12 +28,27 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[1, 2, 3, 4, 5], 3], "expected": [1, 2], "name": "at start"},
     ],
     "three_sum": [
-        {"args": [[-1, 0, 1, 2, -1, -4]], "expected": [[-1, -1, 2], [-1, 0, 1]], "name": "basic triplets", "compare": "set_of_tuples"},
+        {
+            "args": [[-1, 0, 1, 2, -1, -4]],
+            "expected": [[-1, -1, 2], [-1, 0, 1]],
+            "name": "basic triplets",
+            "compare": "set_of_tuples",
+        },
         {"args": [[0, 1, 1]], "expected": [], "name": "no triplet"},
-        {"args": [[0, 0, 0]], "expected": [[0, 0, 0]], "name": "all zeros", "compare": "set_of_tuples"},
+        {
+            "args": [[0, 0, 0]],
+            "expected": [[0, 0, 0]],
+            "name": "all zeros",
+            "compare": "set_of_tuples",
+        },
         {"args": [[]], "expected": [], "name": "empty array"},
         {"args": [[0]], "expected": [], "name": "single element"},
-        {"args": [[-2, 0, 1, 1, 2]], "expected": [[-2, 0, 2], [-2, 1, 1]], "name": "multiple triplets", "compare": "set_of_tuples"},
+        {
+            "args": [[-2, 0, 1, 1, 2]],
+            "expected": [[-2, 0, 2], [-2, 1, 1]],
+            "name": "multiple triplets",
+            "compare": "set_of_tuples",
+        },
     ],
     "container_with_most_water": [
         {"args": [[1, 8, 6, 2, 5, 4, 8, 3, 7]], "expected": 49, "name": "basic case"},
@@ -38,7 +58,11 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[2, 3, 4, 5, 18, 17, 6]], "expected": 17, "name": "tall in middle"},
     ],
     "max_sum_subarray_k": [
-        {"args": [[1, 4, 2, 10, 23, 3, 1, 0, 20], 4], "expected": 39, "name": "basic window"},
+        {
+            "args": [[1, 4, 2, 10, 23, 3, 1, 0, 20], 4],
+            "expected": 39,
+            "name": "basic window",
+        },
         {"args": [[1, 2, 3], 3], "expected": 6, "name": "window equals length"},
         {"args": [[5], 1], "expected": 5, "name": "single element"},
         {"args": [[1, 2, 3, 4, 5], 2], "expected": 9, "name": "window at end"},
@@ -55,7 +79,11 @@ TOPIC_04_TESTS: TestCasesDict = {
     ],
     "remove_duplicates_sorted": [
         {"args": [[1, 1, 2]], "expected": 2, "name": "basic case"},
-        {"args": [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4]], "expected": 5, "name": "multiple duplicates"},
+        {
+            "args": [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4]],
+            "expected": 5,
+            "name": "multiple duplicates",
+        },
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[1]], "expected": 1, "name": "single element"},
         {"args": [[1, 2, 3]], "expected": 3, "name": "no duplicates"},
@@ -67,14 +95,26 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": ["aa", "aa"], "expected": "aa", "name": "exact match"},
     ],
     "sort_colors": [
-        {"args": [[2, 0, 2, 1, 1, 0]], "expected": [0, 0, 1, 1, 2, 2], "name": "basic case"},
+        {
+            "args": [[2, 0, 2, 1, 1, 0]],
+            "expected": [0, 0, 1, 1, 2, 2],
+            "name": "basic case",
+        },
         {"args": [[2, 0, 1]], "expected": [0, 1, 2], "name": "one of each"},
         {"args": [[0]], "expected": [0], "name": "single element"},
         {"args": [[1, 1, 1]], "expected": [1, 1, 1], "name": "all same"},
-        {"args": [[2, 2, 2, 1, 1, 0, 0]], "expected": [0, 0, 1, 1, 2, 2, 2], "name": "reverse sorted"},
+        {
+            "args": [[2, 2, 2, 1, 1, 0, 0]],
+            "expected": [0, 0, 1, 1, 2, 2, 2],
+            "name": "reverse sorted",
+        },
     ],
     "trapping_rain_water": [
-        {"args": [[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]], "expected": 6, "name": "basic case"},
+        {
+            "args": [[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]],
+            "expected": 6,
+            "name": "basic case",
+        },
         {"args": [[4, 2, 0, 3, 2, 5]], "expected": 9, "name": "another case"},
         {"args": [[4, 2, 3]], "expected": 1, "name": "simple trap"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 0, "name": "increasing"},
@@ -99,8 +139,16 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": ["abc", "bca"], "expected": True, "name": "exact anagram"},
     ],
     "max_consecutive_ones_iii": [
-        {"args": [[1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2], "expected": 6, "name": "basic case"},
-        {"args": [[0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3], "expected": 10, "name": "longer"},
+        {
+            "args": [[1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2],
+            "expected": 6,
+            "name": "basic case",
+        },
+        {
+            "args": [[0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3],
+            "expected": 10,
+            "name": "longer",
+        },
         {"args": [[1, 1, 1], 0], "expected": 3, "name": "all ones no flips"},
         {"args": [[0, 0, 0], 3], "expected": 3, "name": "all zeros flip all"},
     ],
@@ -111,9 +159,24 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[1, 1, 1, 1], 2], "expected": 2, "name": "pairs"},
     ],
     "four_sum": [
-        {"args": [[1, 0, -1, 0, -2, 2], 0], "expected": [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]], "name": "basic case", "compare": "set_of_tuples"},
-        {"args": [[2, 2, 2, 2, 2], 8], "expected": [[2, 2, 2, 2]], "name": "all same", "compare": "set_of_tuples"},
-        {"args": [[0, 0, 0, 0], 0], "expected": [[0, 0, 0, 0]], "name": "all zeros", "compare": "set_of_tuples"},
+        {
+            "args": [[1, 0, -1, 0, -2, 2], 0],
+            "expected": [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]],
+            "name": "basic case",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[2, 2, 2, 2, 2], 8],
+            "expected": [[2, 2, 2, 2]],
+            "name": "all same",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[0, 0, 0, 0], 0],
+            "expected": [[0, 0, 0, 0]],
+            "name": "all zeros",
+            "compare": "set_of_tuples",
+        },
     ],
     "is_palindrome_ii": [
         {"args": ["aba"], "expected": True, "name": "already palindrome"},
@@ -122,24 +185,52 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": ["deeee"], "expected": True, "name": "remove first"},
     ],
     "reverse_words": [
-        {"args": ["the sky is blue"], "expected": "blue is sky the", "name": "basic case"},
-        {"args": ["  hello world  "], "expected": "world hello", "name": "extra spaces"},
-        {"args": ["a good   example"], "expected": "example good a", "name": "multiple spaces"},
+        {
+            "args": ["the sky is blue"],
+            "expected": "blue is sky the",
+            "name": "basic case",
+        },
+        {
+            "args": ["  hello world  "],
+            "expected": "world hello",
+            "name": "extra spaces",
+        },
+        {
+            "args": ["a good   example"],
+            "expected": "example good a",
+            "name": "multiple spaces",
+        },
     ],
     "remove_duplicates_ii": [
         {"args": [[1, 1, 1, 2, 2, 3]], "expected": 5, "name": "basic case"},
-        {"args": [[0, 0, 1, 1, 1, 1, 2, 3, 3]], "expected": 7, "name": "more duplicates"},
+        {
+            "args": [[0, 0, 1, 1, 1, 1, 2, 3, 3]],
+            "expected": 7,
+            "name": "more duplicates",
+        },
         {"args": [[1, 2, 3]], "expected": 3, "name": "no duplicates"},
     ],
     "string_compression": [
-        {"args": [["a", "a", "b", "b", "c", "c", "c"]], "expected": 6, "name": "basic case"},
+        {
+            "args": [["a", "a", "b", "b", "c", "c", "c"]],
+            "expected": 6,
+            "name": "basic case",
+        },
         {"args": [["a"]], "expected": 1, "name": "single char"},
         {"args": [["a", "b", "c"]], "expected": 3, "name": "no compression"},
-        {"args": [["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a"]], "expected": 3, "name": "twelve a's"},
+        {
+            "args": [["a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a"]],
+            "expected": 3,
+            "name": "twelve a's",
+        },
     ],
     "longest_mountain": [
         {"args": [[2, 1, 4, 7, 3, 2, 5]], "expected": 5, "name": "basic case"},
         {"args": [[2, 2, 2]], "expected": 0, "name": "all same"},
-        {"args": [[0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]], "expected": 11, "name": "full mountain"},
+        {
+            "args": [[0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]],
+            "expected": 11,
+            "name": "full mountain",
+        },
     ],
 }

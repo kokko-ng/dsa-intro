@@ -1,9 +1,10 @@
 """
 DSA Checker - Standalone test runner for DSA exercises.
 """
+
 from __future__ import annotations
 
-from typing import Callable
+from collections.abc import Callable
 
 from .test_cases import TEST_CASES
 from .types import TestCase
@@ -277,7 +278,7 @@ def _display_results(
 
         html = (
             f'<div style="padding: 12px; background: {status_bg}; border-radius: 6px; '
-            f'border-left: 4px solid {status_color}; margin: 8px 0; '
+            f"border-left: 4px solid {status_color}; margin: 8px 0; "
             f'font-family: system-ui, -apple-system, sans-serif;">'
         )
         html += (
@@ -299,7 +300,9 @@ def _display_results(
             args_repr = (
                 repr(args)
                 if len(args_list) > 1
-                else repr(args_list[0]) if args_list else "()"
+                else repr(args_list[0])
+                if args_list
+                else "()"
             )
             expected_repr = repr(first_failure.get("expected"))
             is_error = first_failure.get("is_error", False)
@@ -319,11 +322,11 @@ def _display_results(
                     )
 
             name = first_failure.get("name", "unknown")
-            html += f'<div style="margin-top: 10px; font-size: 13px; color: #666;">'
+            html += '<div style="margin-top: 10px; font-size: 13px; color: #666;">'
             html += f"<strong>Failed test {test_num}/{total_tests}:</strong> {name}<br>"
             html += (
-                f'<div style="background: #f8f9fa; padding: 8px 10px; border-radius: 4px; '
-                f'margin-top: 6px; font-family: monospace; font-size: 12px;">'
+                '<div style="background: #f8f9fa; padding: 8px 10px; border-radius: 4px; '
+                'margin-top: 6px; font-family: monospace; font-size: 12px;">'
             )
             html += f"<div><strong>Input:</strong> {args_repr}</div>"
             html += (
@@ -351,7 +354,9 @@ def _display_results(
                 args_repr = (
                     repr(args)
                     if len(args_list) > 1
-                    else repr(args_list[0]) if args_list else "()"
+                    else repr(args_list[0])
+                    if args_list
+                    else "()"
                 )
                 expected_repr = repr(first_failure.get("expected"))
                 is_error = first_failure.get("is_error", False)

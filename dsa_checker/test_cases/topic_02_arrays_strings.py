@@ -1,6 +1,7 @@
 """
 Topic 02: Arrays & Strings
 """
+
 from ..types import TestCasesDict
 
 TOPIC_02_TESTS: TestCasesDict = {
@@ -9,7 +10,11 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[3, 2, 4], 6], "expected": [1, 2], "name": "middle elements"},
         {"args": [[3, 3], 6], "expected": [0, 1], "name": "duplicate values"},
         {"args": [[1, 2, 3, 4, 5], 9], "expected": [3, 4], "name": "end elements"},
-        {"args": [[-1, -2, -3, -4, -5], -8], "expected": [2, 4], "name": "negative numbers"},
+        {
+            "args": [[-1, -2, -3, -4, -5], -8],
+            "expected": [2, 4],
+            "name": "negative numbers",
+        },
         {"args": [[0, 4, 3, 0], 0], "expected": [0, 3], "name": "zero target"},
     ],
     "best_time_to_buy_sell": [
@@ -28,31 +33,67 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[]], "expected": False, "name": "empty array"},
         {"args": [[1]], "expected": False, "name": "single element"},
         {"args": [[1, 1]], "expected": True, "name": "two same elements"},
-        {"args": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 1]], "expected": True, "name": "duplicate at end"},
+        {
+            "args": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 1]],
+            "expected": True,
+            "name": "duplicate at end",
+        },
     ],
     "max_subarray": [
-        {"args": [[-2, 1, -3, 4, -1, 2, 1, -5, 4]], "expected": 6, "name": "basic kadane"},
+        {
+            "args": [[-2, 1, -3, 4, -1, 2, 1, -5, 4]],
+            "expected": 6,
+            "name": "basic kadane",
+        },
         {"args": [[1]], "expected": 1, "name": "single element"},
         {"args": [[5, 4, -1, 7, 8]], "expected": 23, "name": "almost all positive"},
         {"args": [[-1]], "expected": -1, "name": "single negative"},
         {"args": [[-2, -1]], "expected": -1, "name": "all negative"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 15, "name": "all positive"},
-        {"args": [[-1, -2, -3, -4, -5]], "expected": -1, "name": "all negative pick max"},
+        {
+            "args": [[-1, -2, -3, -4, -5]],
+            "expected": -1,
+            "name": "all negative pick max",
+        },
     ],
     "rotate_array": [
-        {"args": [[1, 2, 3, 4, 5, 6, 7], 3], "expected": [5, 6, 7, 1, 2, 3, 4], "name": "rotate by 3"},
-        {"args": [[-1, -100, 3, 99], 2], "expected": [3, 99, -1, -100], "name": "negative numbers"},
+        {
+            "args": [[1, 2, 3, 4, 5, 6, 7], 3],
+            "expected": [5, 6, 7, 1, 2, 3, 4],
+            "name": "rotate by 3",
+        },
+        {
+            "args": [[-1, -100, 3, 99], 2],
+            "expected": [3, 99, -1, -100],
+            "name": "negative numbers",
+        },
         {"args": [[1, 2], 1], "expected": [2, 1], "name": "rotate by 1"},
         {"args": [[1, 2, 3], 3], "expected": [1, 2, 3], "name": "rotate by length"},
-        {"args": [[1, 2, 3], 4], "expected": [3, 1, 2], "name": "rotate more than length"},
+        {
+            "args": [[1, 2, 3], 4],
+            "expected": [3, 1, 2],
+            "name": "rotate more than length",
+        },
         {"args": [[1], 5], "expected": [1], "name": "single element"},
     ],
     "reverse_string": [
-        {"args": [["h", "e", "l", "l", "o"]], "expected": ["o", "l", "l", "e", "h"], "name": "hello"},
-        {"args": [["H", "a", "n", "n", "a", "h"]], "expected": ["h", "a", "n", "n", "a", "H"], "name": "Hannah"},
+        {
+            "args": [["h", "e", "l", "l", "o"]],
+            "expected": ["o", "l", "l", "e", "h"],
+            "name": "hello",
+        },
+        {
+            "args": [["H", "a", "n", "n", "a", "h"]],
+            "expected": ["h", "a", "n", "n", "a", "H"],
+            "name": "Hannah",
+        },
         {"args": [["a"]], "expected": ["a"], "name": "single char"},
         {"args": [["a", "b"]], "expected": ["b", "a"], "name": "two chars"},
-        {"args": [["a", "b", "c", "d"]], "expected": ["d", "c", "b", "a"], "name": "four chars"},
+        {
+            "args": [["a", "b", "c", "d"]],
+            "expected": ["d", "c", "b", "a"],
+            "name": "four chars",
+        },
     ],
     "valid_anagram": [
         {"args": ["anagram", "nagaram"], "expected": True, "name": "valid anagram"},
@@ -65,8 +106,16 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": ["aab", "aba"], "expected": True, "name": "repeated chars"},
     ],
     "longest_common_prefix": [
-        {"args": [["flower", "flow", "flight"]], "expected": "fl", "name": "basic prefix"},
-        {"args": [["dog", "racecar", "car"]], "expected": "", "name": "no common prefix"},
+        {
+            "args": [["flower", "flow", "flight"]],
+            "expected": "fl",
+            "name": "basic prefix",
+        },
+        {
+            "args": [["dog", "racecar", "car"]],
+            "expected": "",
+            "name": "no common prefix",
+        },
         {"args": [[]], "expected": "", "name": "empty array"},
         {"args": [["single"]], "expected": "single", "name": "single word"},
         {"args": [["", "b"]], "expected": "", "name": "empty string in array"},
@@ -90,25 +139,50 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": ["   "], "expected": 0, "name": "only spaces"},
     ],
     "move_zeroes": [
-        {"args": [[0, 1, 0, 3, 12]], "expected": [1, 3, 12, 0, 0], "name": "basic case"},
+        {
+            "args": [[0, 1, 0, 3, 12]],
+            "expected": [1, 3, 12, 0, 0],
+            "name": "basic case",
+        },
         {"args": [[0]], "expected": [0], "name": "single zero"},
         {"args": [[1, 2, 3]], "expected": [1, 2, 3], "name": "no zeros"},
         {"args": [[0, 0, 0]], "expected": [0, 0, 0], "name": "all zeros"},
         {"args": [[1, 0]], "expected": [1, 0], "name": "two elements"},
     ],
     "spiral_matrix": [
-        {"args": [[[1, 2, 3], [4, 5, 6], [7, 8, 9]]], "expected": [1, 2, 3, 6, 9, 8, 7, 4, 5], "name": "3x3 matrix"},
-        {"args": [[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]], "expected": [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7], "name": "3x4 matrix"},
+        {
+            "args": [[[1, 2, 3], [4, 5, 6], [7, 8, 9]]],
+            "expected": [1, 2, 3, 6, 9, 8, 7, 4, 5],
+            "name": "3x3 matrix",
+        },
+        {
+            "args": [[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]],
+            "expected": [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7],
+            "name": "3x4 matrix",
+        },
         {"args": [[[1]]], "expected": [1], "name": "single element"},
         {"args": [[[1, 2], [3, 4]]], "expected": [1, 2, 4, 3], "name": "2x2 matrix"},
     ],
     "set_matrix_zeroes": [
-        {"args": [[[1, 1, 1], [1, 0, 1], [1, 1, 1]]], "expected": [[1, 0, 1], [0, 0, 0], [1, 0, 1]], "name": "center zero"},
-        {"args": [[[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]], "expected": [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]], "name": "corner zeros"},
+        {
+            "args": [[[1, 1, 1], [1, 0, 1], [1, 1, 1]]],
+            "expected": [[1, 0, 1], [0, 0, 0], [1, 0, 1]],
+            "name": "center zero",
+        },
+        {
+            "args": [[[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]],
+            "expected": [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]],
+            "name": "corner zeros",
+        },
         {"args": [[[1, 2], [3, 4]]], "expected": [[1, 2], [3, 4]], "name": "no zeros"},
     ],
     "find_all_duplicates": [
-        {"args": [[4, 3, 2, 7, 8, 2, 3, 1]], "expected": [2, 3], "name": "basic case", "compare": "set"},
+        {
+            "args": [[4, 3, 2, 7, 8, 2, 3, 1]],
+            "expected": [2, 3],
+            "name": "basic case",
+            "compare": "set",
+        },
         {"args": [[1, 1, 2]], "expected": [1], "name": "single duplicate"},
         {"args": [[1, 2, 3, 4]], "expected": [], "name": "no duplicates"},
         {"args": [[1, 1]], "expected": [1], "name": "two elements same"},
@@ -149,10 +223,18 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[1, 9, 9]], "expected": [2, 0, 0], "name": "carry over"},
     ],
     "merge_sorted_array": [
-        {"args": [[1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3], "expected": [1, 2, 2, 3, 5, 6], "name": "basic case"},
+        {
+            "args": [[1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3],
+            "expected": [1, 2, 2, 3, 5, 6],
+            "name": "basic case",
+        },
         {"args": [[1], 1, [], 0], "expected": [1], "name": "empty second"},
         {"args": [[0], 0, [1], 1], "expected": [1], "name": "empty first"},
-        {"args": [[4, 5, 6, 0, 0, 0], 3, [1, 2, 3], 3], "expected": [1, 2, 3, 4, 5, 6], "name": "second smaller"},
+        {
+            "args": [[4, 5, 6, 0, 0, 0], 3, [1, 2, 3], 3],
+            "expected": [1, 2, 3, 4, 5, 6],
+            "name": "second smaller",
+        },
     ],
     "majority_element": [
         {"args": [[3, 2, 3]], "expected": 3, "name": "basic case"},
@@ -192,7 +274,11 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[1, 3, 5, 6], 0], "expected": 0, "name": "insert start"},
     ],
     "pascal_triangle": [
-        {"args": [5], "expected": [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]], "name": "five rows"},
+        {
+            "args": [5],
+            "expected": [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]],
+            "name": "five rows",
+        },
         {"args": [1], "expected": [[1]], "name": "single row"},
         {"args": [2], "expected": [[1], [1, 1]], "name": "two rows"},
     ],

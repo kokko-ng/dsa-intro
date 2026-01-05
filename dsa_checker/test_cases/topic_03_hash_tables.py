@@ -1,6 +1,7 @@
 """
 Topic 03: Hash Tables
 """
+
 from ..types import TestCasesDict
 
 TOPIC_03_TESTS: TestCasesDict = {
@@ -14,11 +15,36 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": ["abcabc"], "expected": -1, "name": "all repeated pattern"},
     ],
     "group_anagrams": [
-        {"args": [["eat", "tea", "tan", "ate", "nat", "bat"]], "expected": [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]], "name": "basic groups", "compare": "set_of_sets"},
-        {"args": [[""]], "expected": [[""]], "name": "empty string", "compare": "set_of_sets"},
-        {"args": [["a"]], "expected": [["a"]], "name": "single char", "compare": "set_of_sets"},
-        {"args": [["abc", "bca", "cab", "xyz"]], "expected": [["abc", "bca", "cab"], ["xyz"]], "name": "one group plus single", "compare": "set_of_sets"},
-        {"args": [["", ""]], "expected": [["", ""]], "name": "two empty strings", "compare": "set_of_sets"},
+        {
+            "args": [["eat", "tea", "tan", "ate", "nat", "bat"]],
+            "expected": [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]],
+            "name": "basic groups",
+            "compare": "set_of_sets",
+        },
+        {
+            "args": [[""]],
+            "expected": [[""]],
+            "name": "empty string",
+            "compare": "set_of_sets",
+        },
+        {
+            "args": [["a"]],
+            "expected": [["a"]],
+            "name": "single char",
+            "compare": "set_of_sets",
+        },
+        {
+            "args": [["abc", "bca", "cab", "xyz"]],
+            "expected": [["abc", "bca", "cab"], ["xyz"]],
+            "name": "one group plus single",
+            "compare": "set_of_sets",
+        },
+        {
+            "args": [["", ""]],
+            "expected": [["", ""]],
+            "name": "two empty strings",
+            "compare": "set_of_sets",
+        },
     ],
     "isomorphic_strings": [
         {"args": ["egg", "add"], "expected": True, "name": "basic isomorphic"},
@@ -30,16 +56,36 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": ["badc", "baba"], "expected": False, "name": "mapping conflict"},
     ],
     "word_pattern": [
-        {"args": ["abba", "dog cat cat dog"], "expected": True, "name": "basic pattern match"},
-        {"args": ["abba", "dog cat cat fish"], "expected": False, "name": "pattern mismatch"},
-        {"args": ["aaaa", "dog cat cat dog"], "expected": False, "name": "word mismatch"},
-        {"args": ["abba", "dog dog dog dog"], "expected": False, "name": "all same words"},
+        {
+            "args": ["abba", "dog cat cat dog"],
+            "expected": True,
+            "name": "basic pattern match",
+        },
+        {
+            "args": ["abba", "dog cat cat fish"],
+            "expected": False,
+            "name": "pattern mismatch",
+        },
+        {
+            "args": ["aaaa", "dog cat cat dog"],
+            "expected": False,
+            "name": "word mismatch",
+        },
+        {
+            "args": ["abba", "dog dog dog dog"],
+            "expected": False,
+            "name": "all same words",
+        },
         {"args": ["a", "dog"], "expected": True, "name": "single word"},
         {"args": ["abc", "dog cat fish"], "expected": True, "name": "all different"},
     ],
     "longest_consecutive": [
         {"args": [[100, 4, 200, 1, 3, 2]], "expected": 4, "name": "basic sequence"},
-        {"args": [[0, 3, 7, 2, 5, 8, 4, 6, 0, 1]], "expected": 9, "name": "longer sequence"},
+        {
+            "args": [[0, 3, 7, 2, 5, 8, 4, 6, 0, 1]],
+            "expected": 9,
+            "name": "longer sequence",
+        },
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[1]], "expected": 1, "name": "single element"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 5, "name": "all consecutive"},
@@ -55,22 +101,99 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": [[-1, -1, 1], 0], "expected": 1, "name": "negative numbers"},
     ],
     "top_k_frequent": [
-        {"args": [[1, 1, 1, 2, 2, 3], 2], "expected": [1, 2], "name": "basic k=2", "compare": "set"},
+        {
+            "args": [[1, 1, 1, 2, 2, 3], 2],
+            "expected": [1, 2],
+            "name": "basic k=2",
+            "compare": "set",
+        },
         {"args": [[1], 1], "expected": [1], "name": "single element", "compare": "set"},
-        {"args": [[1, 2], 2], "expected": [1, 2], "name": "two elements k=2", "compare": "set"},
-        {"args": [[4, 1, -1, 2, -1, 2, 3], 2], "expected": [-1, 2], "name": "with negatives", "compare": "set"},
-        {"args": [[3, 3, 3, 1, 1, 2], 1], "expected": [3], "name": "k=1", "compare": "set"},
+        {
+            "args": [[1, 2], 2],
+            "expected": [1, 2],
+            "name": "two elements k=2",
+            "compare": "set",
+        },
+        {
+            "args": [[4, 1, -1, 2, -1, 2, 3], 2],
+            "expected": [-1, 2],
+            "name": "with negatives",
+            "compare": "set",
+        },
+        {
+            "args": [[3, 3, 3, 1, 1, 2], 1],
+            "expected": [3],
+            "name": "k=1",
+            "compare": "set",
+        },
     ],
     "intersection_of_arrays": [
-        {"args": [[1, 2, 2, 1], [2, 2]], "expected": [2], "name": "basic intersection", "compare": "set"},
-        {"args": [[4, 9, 5], [9, 4, 9, 8, 4]], "expected": [4, 9], "name": "multiple common", "compare": "set"},
-        {"args": [[1, 2, 3], [4, 5, 6]], "expected": [], "name": "no intersection", "compare": "set"},
-        {"args": [[], [1, 2, 3]], "expected": [], "name": "one empty", "compare": "set"},
-        {"args": [[1, 1, 1], [1, 1, 1]], "expected": [1], "name": "all same", "compare": "set"},
+        {
+            "args": [[1, 2, 2, 1], [2, 2]],
+            "expected": [2],
+            "name": "basic intersection",
+            "compare": "set",
+        },
+        {
+            "args": [[4, 9, 5], [9, 4, 9, 8, 4]],
+            "expected": [4, 9],
+            "name": "multiple common",
+            "compare": "set",
+        },
+        {
+            "args": [[1, 2, 3], [4, 5, 6]],
+            "expected": [],
+            "name": "no intersection",
+            "compare": "set",
+        },
+        {
+            "args": [[], [1, 2, 3]],
+            "expected": [],
+            "name": "one empty",
+            "compare": "set",
+        },
+        {
+            "args": [[1, 1, 1], [1, 1, 1]],
+            "expected": [1],
+            "name": "all same",
+            "compare": "set",
+        },
     ],
     "valid_sudoku": [
-        {"args": [[["5", "3", ".", ".", "7", ".", ".", ".", "."], ["6", ".", ".", "1", "9", "5", ".", ".", "."], [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"], ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"], [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"], [".", ".", ".", ".", "8", ".", ".", "7", "9"]]], "expected": True, "name": "valid board"},
-        {"args": [[["8", "3", ".", ".", "7", ".", ".", ".", "."], ["6", ".", ".", "1", "9", "5", ".", ".", "."], [".", "9", "8", ".", ".", ".", ".", "6", "."], ["8", ".", ".", ".", "6", ".", ".", ".", "3"], ["4", ".", ".", "8", ".", "3", ".", ".", "1"], ["7", ".", ".", ".", "2", ".", ".", ".", "6"], [".", "6", ".", ".", ".", ".", "2", "8", "."], [".", ".", ".", "4", "1", "9", ".", ".", "5"], [".", ".", ".", ".", "8", ".", ".", "7", "9"]]], "expected": False, "name": "duplicate in column"},
+        {
+            "args": [
+                [
+                    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+                    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+                    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+                    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+                    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+                    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+                    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+                    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+                    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+                ]
+            ],
+            "expected": True,
+            "name": "valid board",
+        },
+        {
+            "args": [
+                [
+                    ["8", "3", ".", ".", "7", ".", ".", ".", "."],
+                    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+                    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+                    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+                    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+                    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+                    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+                    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+                    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+                ]
+            ],
+            "expected": False,
+            "name": "duplicate in column",
+        },
     ],
     "happy_number": [
         {"args": [19], "expected": True, "name": "happy 19"},
@@ -109,8 +232,18 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": ["abc", "abcabc"], "expected": 6, "name": "all jewels"},
     ],
     "find_common_characters": [
-        {"args": [["bella", "label", "roller"]], "expected": ["e", "l", "l"], "name": "basic case", "compare": "sorted"},
-        {"args": [["cool", "lock", "cook"]], "expected": ["c", "o"], "name": "two common", "compare": "sorted"},
+        {
+            "args": [["bella", "label", "roller"]],
+            "expected": ["e", "l", "l"],
+            "name": "basic case",
+            "compare": "sorted",
+        },
+        {
+            "args": [["cool", "lock", "cook"]],
+            "expected": ["c", "o"],
+            "name": "two common",
+            "compare": "sorted",
+        },
         {"args": [["abc", "def"]], "expected": [], "name": "no common"},
     ],
     "count_elements": [
@@ -122,7 +255,11 @@ TOPIC_03_TESTS: TestCasesDict = {
     "unique_occurrences": [
         {"args": [[1, 2, 2, 1, 1, 3]], "expected": True, "name": "unique counts"},
         {"args": [[1, 2]], "expected": False, "name": "same counts"},
-        {"args": [[-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]], "expected": True, "name": "with negatives"},
+        {
+            "args": [[-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]],
+            "expected": True,
+            "name": "with negatives",
+        },
     ],
     "set_mismatch": [
         {"args": [[1, 2, 2, 4]], "expected": [2, 3], "name": "basic case"},

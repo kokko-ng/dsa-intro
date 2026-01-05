@@ -1,6 +1,7 @@
 """
 Linked List helper classes and utilities.
 """
+
 from __future__ import annotations
 
 

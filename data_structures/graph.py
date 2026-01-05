@@ -1,6 +1,7 @@
 """
 Graph helper classes and utilities.
 """
+
 from __future__ import annotations
 
 
@@ -91,7 +92,9 @@ def build_graph_nodes(adj_list: list[list[int]]) -> GraphNode | None:
         return None
 
     # Create all nodes (1-indexed)
-    nodes: dict[int, GraphNode] = {i + 1: GraphNode(i + 1) for i in range(len(adj_list))}
+    nodes: dict[int, GraphNode] = {
+        i + 1: GraphNode(i + 1) for i in range(len(adj_list))
+    }
 
     # Connect neighbors
     for i, neighbors in enumerate(adj_list):

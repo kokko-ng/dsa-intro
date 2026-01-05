@@ -1,6 +1,7 @@
 """
 Topic 06: Stacks & Queues
 """
+
 from ..types import TestCasesDict
 
 TOPIC_06_TESTS: TestCasesDict = {
@@ -16,24 +17,46 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": ["((()))"], "expected": True, "name": "deeply nested"},
     ],
     "evaluate_rpn": [
-        {"args": [["2", "1", "+", "3", "*"]], "expected": 9, "name": "basic expression"},
+        {
+            "args": [["2", "1", "+", "3", "*"]],
+            "expected": 9,
+            "name": "basic expression",
+        },
         {"args": [["4", "13", "5", "/", "+"]], "expected": 6, "name": "with division"},
-        {"args": [["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]], "expected": 22, "name": "complex"},
+        {
+            "args": [
+                ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
+            ],
+            "expected": 22,
+            "name": "complex",
+        },
         {"args": [["3"]], "expected": 3, "name": "single number"},
         {"args": [["3", "4", "+"]], "expected": 7, "name": "simple addition"},
         {"args": [["3", "4", "-"]], "expected": -1, "name": "simple subtraction"},
     ],
     "daily_temperatures": [
-        {"args": [[73, 74, 75, 71, 69, 72, 76, 73]], "expected": [1, 1, 4, 2, 1, 1, 0, 0], "name": "basic case"},
+        {
+            "args": [[73, 74, 75, 71, 69, 72, 76, 73]],
+            "expected": [1, 1, 4, 2, 1, 1, 0, 0],
+            "name": "basic case",
+        },
         {"args": [[30, 40, 50, 60]], "expected": [1, 1, 1, 0], "name": "increasing"},
         {"args": [[60, 50, 40, 30]], "expected": [0, 0, 0, 0], "name": "decreasing"},
         {"args": [[30]], "expected": [0], "name": "single element"},
         {"args": [[30, 30, 30]], "expected": [0, 0, 0], "name": "all same"},
     ],
     "next_greater_element": [
-        {"args": [[4, 1, 2], [1, 3, 4, 2]], "expected": [-1, 3, -1], "name": "basic case"},
+        {
+            "args": [[4, 1, 2], [1, 3, 4, 2]],
+            "expected": [-1, 3, -1],
+            "name": "basic case",
+        },
         {"args": [[2, 4], [1, 2, 3, 4]], "expected": [3, -1], "name": "simple case"},
-        {"args": [[1, 3, 5, 2, 4], [6, 5, 4, 3, 2, 1, 7]], "expected": [7, 7, 7, 7, 7], "name": "all have greater"},
+        {
+            "args": [[1, 3, 5, 2, 4], [6, 5, 4, 3, 2, 1, 7]],
+            "expected": [7, 7, 7, 7, 7],
+            "name": "all have greater",
+        },
     ],
     "simplify_path": [
         {"args": ["/home/"], "expected": "/home", "name": "trailing slash"},
@@ -50,12 +73,35 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [[6, 2, 5, 4, 5, 1, 6]], "expected": 12, "name": "complex"},
     ],
     "min_stack": [
-        {"args": [["push", "push", "push", "getMin", "pop", "top", "getMin"], [[-2], [0], [-3], [], [], [], []]], "expected": [None, None, None, -3, None, 0, -2], "name": "basic operations", "compare": "stack_ops"},
-        {"args": [["push", "getMin", "push", "getMin"], [[1], [], [-1], []]], "expected": [None, 1, None, -1], "name": "update min", "compare": "stack_ops"},
+        {
+            "args": [
+                ["push", "push", "push", "getMin", "pop", "top", "getMin"],
+                [[-2], [0], [-3], [], [], [], []],
+            ],
+            "expected": [None, None, None, -3, None, 0, -2],
+            "name": "basic operations",
+            "compare": "stack_ops",
+        },
+        {
+            "args": [["push", "getMin", "push", "getMin"], [[1], [], [-1], []]],
+            "expected": [None, 1, None, -1],
+            "name": "update min",
+            "compare": "stack_ops",
+        },
     ],
     "implement_queue_with_stacks": [
-        {"args": [["push", "push", "peek", "pop", "empty"], [[1], [2], [], [], []]], "expected": [None, None, 1, 1, False], "name": "basic operations", "compare": "queue_ops"},
-        {"args": [["push", "pop", "empty"], [[1], [], []]], "expected": [None, 1, True], "name": "push pop empty", "compare": "queue_ops"},
+        {
+            "args": [["push", "push", "peek", "pop", "empty"], [[1], [2], [], [], []]],
+            "expected": [None, None, 1, 1, False],
+            "name": "basic operations",
+            "compare": "queue_ops",
+        },
+        {
+            "args": [["push", "pop", "empty"], [[1], [], []]],
+            "expected": [None, 1, True],
+            "name": "push pop empty",
+            "compare": "queue_ops",
+        },
     ],
     "decode_string": [
         {"args": ["3[a]2[bc]"], "expected": "aaabcbc", "name": "basic case"},
@@ -76,13 +122,25 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": ["112", 1], "expected": "11", "name": "remove from middle"},
     ],
     "car_fleet": [
-        {"args": [12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]], "expected": 3, "name": "basic case"},
+        {
+            "args": [12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]],
+            "expected": 3,
+            "name": "basic case",
+        },
         {"args": [10, [3], [3]], "expected": 1, "name": "single car"},
         {"args": [100, [0, 2, 4], [4, 2, 1]], "expected": 1, "name": "all merge"},
     ],
     "validate_stack_sequences": [
-        {"args": [[1, 2, 3, 4, 5], [4, 5, 3, 2, 1]], "expected": True, "name": "valid sequence"},
-        {"args": [[1, 2, 3, 4, 5], [4, 3, 5, 1, 2]], "expected": False, "name": "invalid sequence"},
+        {
+            "args": [[1, 2, 3, 4, 5], [4, 5, 3, 2, 1]],
+            "expected": True,
+            "name": "valid sequence",
+        },
+        {
+            "args": [[1, 2, 3, 4, 5], [4, 3, 5, 1, 2]],
+            "expected": False,
+            "name": "invalid sequence",
+        },
         {"args": [[1], [1]], "expected": True, "name": "single element"},
         {"args": [[], []], "expected": True, "name": "empty"},
     ],

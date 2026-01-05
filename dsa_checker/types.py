@@ -1,6 +1,7 @@
 """
 Type definitions for DSA Checker.
 """
+
 from typing import NotRequired, TypedDict
 
 

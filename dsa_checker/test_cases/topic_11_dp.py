@@ -1,6 +1,7 @@
 """
 Topic 11: Dynamic Programming
 """
+
 from ..types import TestCasesDict
 
 TOPIC_11_TESTS: TestCasesDict = {
@@ -44,12 +45,28 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [3, 3], "expected": 6, "name": "3x3 grid"},
     ],
     "word_break": [
-        {"args": ["leetcode", ["leet", "code"]], "expected": True, "name": "basic true"},
-        {"args": ["applepenapple", ["apple", "pen"]], "expected": True, "name": "word reuse"},
-        {"args": ["catsandog", ["cats", "dog", "sand", "and", "cat"]], "expected": False, "name": "cannot break"},
+        {
+            "args": ["leetcode", ["leet", "code"]],
+            "expected": True,
+            "name": "basic true",
+        },
+        {
+            "args": ["applepenapple", ["apple", "pen"]],
+            "expected": True,
+            "name": "word reuse",
+        },
+        {
+            "args": ["catsandog", ["cats", "dog", "sand", "and", "cat"]],
+            "expected": False,
+            "name": "cannot break",
+        },
         {"args": ["a", ["a"]], "expected": True, "name": "single char"},
         {"args": ["", []], "expected": True, "name": "empty string"},
-        {"args": ["aaaaaaa", ["aaaa", "aaa"]], "expected": True, "name": "multiple ways"},
+        {
+            "args": ["aaaaaaa", ["aaaa", "aaa"]],
+            "expected": True,
+            "name": "multiple ways",
+        },
     ],
     "longest_common_subsequence": [
         {"args": ["abcde", "ace"], "expected": 3, "name": "basic case"},
@@ -80,14 +97,26 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[-2]], "expected": -2, "name": "single negative"},
     ],
     "min_path_sum": [
-        {"args": [[[1, 3, 1], [1, 5, 1], [4, 2, 1]]], "expected": 7, "name": "basic case"},
+        {
+            "args": [[[1, 3, 1], [1, 5, 1], [4, 2, 1]]],
+            "expected": 7,
+            "name": "basic case",
+        },
         {"args": [[[1, 2, 3], [4, 5, 6]]], "expected": 12, "name": "rectangular"},
         {"args": [[[1]]], "expected": 1, "name": "single cell"},
     ],
     "triangle": [
-        {"args": [[[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]], "expected": 11, "name": "basic case"},
+        {
+            "args": [[[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]],
+            "expected": 11,
+            "name": "basic case",
+        },
         {"args": [[[-10]]], "expected": -10, "name": "single element"},
-        {"args": [[[-1], [2, 3], [1, -1, -3]]], "expected": -1, "name": "with negatives"},
+        {
+            "args": [[[-1], [2, 3], [1, -1, -3]]],
+            "expected": -1,
+            "name": "with negatives",
+        },
     ],
     "perfect_squares": [
         {"args": [12], "expected": 3, "name": "12 = 4+4+4"},
@@ -124,7 +153,11 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1]], "expected": 1, "name": "single house"},
     ],
     "minimum_falling_path": [
-        {"args": [[[2, 1, 3], [6, 5, 4], [7, 8, 9]]], "expected": 13, "name": "basic case"},
+        {
+            "args": [[[2, 1, 3], [6, 5, 4], [7, 8, 9]]],
+            "expected": 13,
+            "name": "basic case",
+        },
         {"args": [[[-19, 57], [-40, -5]]], "expected": -59, "name": "with negatives"},
         {"args": [[[1]]], "expected": 1, "name": "single cell"},
     ],
@@ -134,7 +167,18 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["aba"], "expected": 4, "name": "with center palindrome"},
     ],
     "maximal_square": [
-        {"args": [[["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]], "expected": 4, "name": "basic case"},
+        {
+            "args": [
+                [
+                    ["1", "0", "1", "0", "0"],
+                    ["1", "0", "1", "1", "1"],
+                    ["1", "1", "1", "1", "1"],
+                    ["1", "0", "0", "1", "0"],
+                ]
+            ],
+            "expected": 4,
+            "name": "basic case",
+        },
         {"args": [[["0", "1"], ["1", "0"]]], "expected": 1, "name": "no larger square"},
         {"args": [[["0"]]], "expected": 0, "name": "single zero"},
     ],
@@ -145,7 +189,11 @@ TOPIC_11_TESTS: TestCasesDict = {
     ],
     "min_cost_climbing_stairs": [
         {"args": [[10, 15, 20]], "expected": 15, "name": "basic case"},
-        {"args": [[1, 100, 1, 1, 1, 100, 1, 1, 100, 1]], "expected": 6, "name": "longer"},
+        {
+            "args": [[1, 100, 1, 1, 1, 100, 1, 1, 100, 1]],
+            "expected": 6,
+            "name": "longer",
+        },
         {"args": [[0, 0, 0, 1]], "expected": 0, "name": "with zeros"},
     ],
     "delete_and_earn": [
