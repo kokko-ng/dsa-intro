@@ -49,4 +49,76 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [[1, 1, 1, 1]], "expected": 4, "name": "all same"},
         {"args": [[6, 2, 5, 4, 5, 1, 6]], "expected": 12, "name": "complex"},
     ],
+    "min_stack": [
+        {"args": [["push", "push", "push", "getMin", "pop", "top", "getMin"], [[-2], [0], [-3], [], [], [], []]], "expected": [None, None, None, -3, None, 0, -2], "name": "basic operations", "compare": "stack_ops"},
+        {"args": [["push", "getMin", "push", "getMin"], [[1], [], [-1], []]], "expected": [None, 1, None, -1], "name": "update min", "compare": "stack_ops"},
+    ],
+    "implement_queue_with_stacks": [
+        {"args": [["push", "push", "peek", "pop", "empty"], [[1], [2], [], [], []]], "expected": [None, None, 1, 1, False], "name": "basic operations", "compare": "queue_ops"},
+        {"args": [["push", "pop", "empty"], [[1], [], []]], "expected": [None, 1, True], "name": "push pop empty", "compare": "queue_ops"},
+    ],
+    "decode_string": [
+        {"args": ["3[a]2[bc]"], "expected": "aaabcbc", "name": "basic case"},
+        {"args": ["3[a2[c]]"], "expected": "accaccacc", "name": "nested"},
+        {"args": ["2[abc]3[cd]ef"], "expected": "abcabccdcdcdef", "name": "mixed"},
+        {"args": ["abc"], "expected": "abc", "name": "no encoding"},
+    ],
+    "asteroid_collision": [
+        {"args": [[5, 10, -5]], "expected": [5, 10], "name": "basic case"},
+        {"args": [[8, -8]], "expected": [], "name": "mutual destruction"},
+        {"args": [[10, 2, -5]], "expected": [10], "name": "bigger survives"},
+        {"args": [[-2, -1, 1, 2]], "expected": [-2, -1, 1, 2], "name": "no collision"},
+    ],
+    "remove_k_digits": [
+        {"args": ["1432219", 3], "expected": "1219", "name": "basic case"},
+        {"args": ["10200", 1], "expected": "200", "name": "leading zeros"},
+        {"args": ["10", 2], "expected": "0", "name": "remove all"},
+        {"args": ["112", 1], "expected": "11", "name": "remove from middle"},
+    ],
+    "car_fleet": [
+        {"args": [12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]], "expected": 3, "name": "basic case"},
+        {"args": [10, [3], [3]], "expected": 1, "name": "single car"},
+        {"args": [100, [0, 2, 4], [4, 2, 1]], "expected": 1, "name": "all merge"},
+    ],
+    "validate_stack_sequences": [
+        {"args": [[1, 2, 3, 4, 5], [4, 5, 3, 2, 1]], "expected": True, "name": "valid sequence"},
+        {"args": [[1, 2, 3, 4, 5], [4, 3, 5, 1, 2]], "expected": False, "name": "invalid sequence"},
+        {"args": [[1], [1]], "expected": True, "name": "single element"},
+        {"args": [[], []], "expected": True, "name": "empty"},
+    ],
+    "basic_calculator_ii": [
+        {"args": ["3+2*2"], "expected": 7, "name": "basic case"},
+        {"args": [" 3/2 "], "expected": 1, "name": "with spaces"},
+        {"args": [" 3+5 / 2 "], "expected": 5, "name": "mixed operations"},
+        {"args": ["42"], "expected": 42, "name": "just number"},
+    ],
+    "remove_adjacent_duplicates": [
+        {"args": ["abbaca"], "expected": "ca", "name": "basic case"},
+        {"args": ["azxxzy"], "expected": "ay", "name": "chain removal"},
+        {"args": ["aab"], "expected": "b", "name": "remove at start"},
+        {"args": ["abc"], "expected": "abc", "name": "no duplicates"},
+    ],
+    "remove_adjacent_duplicates_k": [
+        {"args": ["abcd", 2], "expected": "abcd", "name": "no duplicates"},
+        {"args": ["deeedbbcccbdaa", 3], "expected": "aa", "name": "complex case"},
+        {"args": ["pbbcggttciiippooaais", 2], "expected": "ps", "name": "another case"},
+    ],
+    "max_nesting_depth": [
+        {"args": ["(1+(2*3)+((8)/4))+1"], "expected": 3, "name": "basic case"},
+        {"args": ["(1)+((2))+(((3)))"], "expected": 3, "name": "increasing depth"},
+        {"args": ["1+(2*3)/(2-1)"], "expected": 1, "name": "flat"},
+        {"args": ["1"], "expected": 0, "name": "no parens"},
+    ],
+    "make_valid_parentheses": [
+        {"args": ["lee(t(c)o)de)"], "expected": "lee(t(c)o)de", "name": "basic case"},
+        {"args": ["a)b(c)d"], "expected": "ab(c)d", "name": "remove leading"},
+        {"args": ["))(("], "expected": "", "name": "all invalid"},
+        {"args": ["()"], "expected": "()", "name": "already valid"},
+    ],
+    "backspace_string_compare": [
+        {"args": ["ab#c", "ad#c"], "expected": True, "name": "basic case"},
+        {"args": ["ab##", "c#d#"], "expected": True, "name": "multiple backspace"},
+        {"args": ["a#c", "b"], "expected": False, "name": "different"},
+        {"args": ["a##c", "#a#c"], "expected": True, "name": "extra backspaces"},
+    ],
 }
