@@ -1,8 +1,9 @@
 """
 Topic 03: Hash Tables
 """
+from ..types import TestCasesDict
 
-TOPIC_03_TESTS = {
+TOPIC_03_TESTS: TestCasesDict = {
     "first_unique_char": [
         {"args": ["leetcode"], "expected": 0, "name": "first char unique"},
         {"args": ["loveleetcode"], "expected": 2, "name": "middle unique"},

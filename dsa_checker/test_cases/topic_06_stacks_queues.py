@@ -1,8 +1,9 @@
 """
 Topic 06: Stacks & Queues
 """
+from ..types import TestCasesDict
 
-TOPIC_06_TESTS = {
+TOPIC_06_TESTS: TestCasesDict = {
     "valid_parentheses": [
         {"args": ["()"], "expected": True, "name": "simple pair"},
         {"args": ["()[]{}"], "expected": True, "name": "multiple types"},

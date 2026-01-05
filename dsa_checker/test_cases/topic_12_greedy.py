@@ -1,8 +1,9 @@
 """
 Topic 12: Greedy Algorithms
 """
+from ..types import TestCasesDict
 
-TOPIC_12_TESTS = {
+TOPIC_12_TESTS: TestCasesDict = {
     "jump_game": [
         {"args": [[2, 3, 1, 1, 4]], "expected": True, "name": "can reach end"},
         {"args": [[3, 2, 1, 0, 4]], "expected": False, "name": "stuck at zero"},

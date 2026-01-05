@@ -1,8 +1,9 @@
 """
 Topic 04: Two Pointers & Sliding Window
 """
+from ..types import TestCasesDict
 
-TOPIC_04_TESTS = {
+TOPIC_04_TESTS: TestCasesDict = {
     "valid_palindrome": [
         {"args": ["A man, a plan, a canal: Panama"], "expected": True, "name": "classic palindrome"},
         {"args": ["race a car"], "expected": False, "name": "not palindrome"},

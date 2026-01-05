@@ -1,8 +1,9 @@
 """
 Topic 02: Arrays & Strings
 """
+from ..types import TestCasesDict
 
-TOPIC_02_TESTS = {
+TOPIC_02_TESTS: TestCasesDict = {
     "two_sum": [
         {"args": [[2, 7, 11, 15], 9], "expected": [0, 1], "name": "basic case"},
         {"args": [[3, 2, 4], 6], "expected": [1, 2], "name": "middle elements"},

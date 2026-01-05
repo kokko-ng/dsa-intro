@@ -1,8 +1,9 @@
 """
 Topic 11: Dynamic Programming
 """
+from ..types import TestCasesDict
 
-TOPIC_11_TESTS = {
+TOPIC_11_TESTS: TestCasesDict = {
     "climbing_stairs": [
         {"args": [1], "expected": 1, "name": "one step"},
         {"args": [2], "expected": 2, "name": "two steps"},

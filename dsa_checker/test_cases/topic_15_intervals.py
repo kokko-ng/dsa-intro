@@ -1,8 +1,9 @@
 """
 Topic 15: Intervals & Sorting Patterns
 """
+from ..types import TestCasesDict
 
-TOPIC_15_TESTS = {
+TOPIC_15_TESTS: TestCasesDict = {
     "merge_intervals": [
         {"args": [[[1, 3], [2, 6], [8, 10], [15, 18]]], "expected": [[1, 6], [8, 10], [15, 18]], "name": "basic merge"},
         {"args": [[[1, 4], [4, 5]]], "expected": [[1, 5]], "name": "touching intervals"},

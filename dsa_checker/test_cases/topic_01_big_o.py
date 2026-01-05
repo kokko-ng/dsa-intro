@@ -1,8 +1,9 @@
 """
 Topic 01: Big O Notation & Complexity Analysis
 """
+from ..types import TestCasesDict
 
-TOPIC_01_TESTS = {
+TOPIC_01_TESTS: TestCasesDict = {
     "sum_array": [
         {"args": [[1, 2, 3, 4, 5]], "expected": 15, "name": "basic positive"},
         {"args": [[-1, 1, -2, 2]], "expected": 0, "name": "mixed zero sum"},

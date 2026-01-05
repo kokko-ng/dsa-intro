@@ -1,48 +1,69 @@
 """
 DSA Checker - Standalone test runner for DSA exercises.
 """
-from typing import Callable, Dict, Any
+from __future__ import annotations
+
+from typing import Any, Callable, Optional, cast
 
 from .test_cases import TEST_CASES
 
 
-def _compare_results(result, expected, compare_mode=None):
+def _compare_results(
+    result: Any, expected: Any, compare_mode: Optional[str] = None
+) -> bool:
     """Compare results with special handling for unordered collections."""
     if compare_mode == "set":
         return set(result) == set(expected)
     elif compare_mode == "set_of_tuples":
-        return set(tuple(x) if isinstance(x, list) else x for x in result) == \
-               set(tuple(x) if isinstance(x, list) else x for x in expected)
+        def to_tuple_set(items: Any) -> set[Any]:
+            return {tuple(cast(list[Any], x)) if isinstance(x, list) else x for x in items}
+        return to_tuple_set(result) == to_tuple_set(expected)
     elif compare_mode == "set_of_sets":
-        return set(frozenset(x) for x in result) == set(frozenset(x) for x in expected)
+        def to_frozen_set(items: Any) -> set[frozenset[Any]]:
+            return {frozenset(cast(list[Any], x)) for x in items}
+        return to_frozen_set(result) == to_frozen_set(expected)
     else:
         return result == expected
 
 
-def _display_results(passed: int, failed: int, first_failure: dict = None):
+def _display_notebook(html: str) -> None:
+    """Display HTML in a Jupyter notebook."""
+    try:
+        from IPython.display import HTML, display  # type: ignore[import-not-found]
+
+        display(HTML(html))
+    except ImportError:
+        pass
+
+
+def _display_results(
+    passed: int, failed: int, first_failure: Optional[dict[str, Any]] = None
+) -> None:
     """Display test results."""
     total = passed + failed
 
     try:
-        from IPython.display import display, HTML
+        from IPython.display import display  # type: ignore[import-not-found]  # noqa: F401
+
         in_notebook = True
     except ImportError:
         in_notebook = False
 
     if total == 0:
         if in_notebook:
-            html = """
+            _display_notebook(
+                """
             <div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;">
                 <span style="color: #856404; font-weight: bold;">No tests found</span>
             </div>
             """
-            display(HTML(html))
+            )
         else:
             print("No tests found")
         return
 
     all_passed = failed == 0
-    pass_rate = (passed / total * 100)
+    pass_rate = passed / total * 100
 
     if in_notebook:
         if all_passed:
@@ -74,8 +95,8 @@ def _display_results(passed: int, failed: int, first_failure: dict = None):
             </div>
             """
 
-        html += '</div>'
-        display(HTML(html))
+        html += "</div>"
+        _display_notebook(html)
     else:
         if all_passed:
             print(f"✅ All {total} tests passed!")
@@ -86,7 +107,7 @@ def _display_results(passed: int, failed: int, first_failure: dict = None):
                 print(f"   Expected: {first_failure['expected']}, Got: {first_failure['got']}")
 
 
-def check(func: Callable) -> Dict[str, Any]:
+def check(func: Callable[..., Any]) -> dict[str, Any]:
     """
     Check a student's solution against test cases.
 
@@ -100,7 +121,8 @@ def check(func: Callable) -> Dict[str, Any]:
 
     if func_name not in TEST_CASES:
         try:
-            from IPython.display import display, HTML
+            from IPython.display import HTML, display  # type: ignore[import-not-found]
+
             html = f"""
             <div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;">
                 <span style="color: #856404;">no tests found for check({func_name})</span>
@@ -114,7 +136,7 @@ def check(func: Callable) -> Dict[str, Any]:
     tests = TEST_CASES[func_name]
     passed = 0
     failed = 0
-    first_failure = None
+    first_failure: Optional[dict[str, Any]] = None
 
     for test in tests:
         try:
@@ -129,7 +151,7 @@ def check(func: Callable) -> Dict[str, Any]:
                     first_failure = {
                         "name": test["name"],
                         "expected": test["expected"],
-                        "got": result
+                        "got": result,
                     }
         except Exception as e:
             failed += 1
@@ -137,7 +159,7 @@ def check(func: Callable) -> Dict[str, Any]:
                 first_failure = {
                     "name": test["name"],
                     "expected": test["expected"],
-                    "got": f"Error: {e}"
+                    "got": f"Error: {e}",
                 }
 
     _display_results(passed, failed, first_failure)
@@ -146,5 +168,5 @@ def check(func: Callable) -> Dict[str, Any]:
         "passed": passed,
         "failed": failed,
         "total": passed + failed,
-        "all_passed": failed == 0
+        "all_passed": failed == 0,
     }

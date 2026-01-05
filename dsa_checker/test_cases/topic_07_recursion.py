@@ -1,8 +1,9 @@
 """
 Topic 07: Recursion & Backtracking
 """
+from ..types import TestCasesDict
 
-TOPIC_07_TESTS = {
+TOPIC_07_TESTS: TestCasesDict = {
     "fibonacci": [
         {"args": [0], "expected": 0, "name": "fib(0)"},
         {"args": [1], "expected": 1, "name": "fib(1)"},
