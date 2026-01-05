@@ -52,11 +52,8 @@ def _display_results(
     if total == 0:
         if in_notebook:
             _display_notebook(
-                """
-            <div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;">
-                <span style="color: #856404; font-weight: bold;">No tests found</span>
-            </div>
-            """
+                '<div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107; width: 350px; box-sizing: border-box;">'
+                '<span style="color: #856404; font-weight: bold;">No tests found</span></div>'
             )
         else:
             print("No tests found")
@@ -75,15 +72,9 @@ def _display_results(
             status_bg = "#f8d7da"
             status_text = f"✗ Passed {passed}/{total} tests"
 
-        html = f"""
-        <div style="padding: 12px; background: {status_bg}; border-radius: 6px; border-left: 4px solid {status_color}; margin: 8px 0; font-family: system-ui, -apple-system, sans-serif;">
-            <div style="font-size: 16px; font-weight: bold; color: {status_color};">
-                {status_text}
-            </div>
-            <div style="margin-top: 8px; background: #e9ecef; border-radius: 4px; height: 6px; overflow: hidden;">
-                <div style="background: #28a745; height: 100%; width: {pass_rate}%;"></div>
-            </div>
-        """
+        html = f'<div style="padding: 12px; background: {status_bg}; border-radius: 6px; border-left: 4px solid {status_color}; margin: 8px 0; font-family: system-ui, -apple-system, sans-serif; width: 350px; box-sizing: border-box;">'
+        html += f'<div style="font-size: 16px; font-weight: bold; color: {status_color};">{status_text}</div>'
+        html += f'<div style="margin-top: 8px; background: #e9ecef; border-radius: 4px; height: 6px; overflow: hidden;"><div style="background: #28a745; height: 100%; width: {pass_rate}%;"></div></div>'
 
         if first_failure:
             test_num = first_failure.get('test_num', '?')
@@ -100,16 +91,13 @@ def _display_results(
                 if expected_type != got_type:
                     type_info = f" <span style='color: #856404;'>(type: expected {expected_type}, got {got_type})</span>"
 
-            html += f"""
-            <div style="margin-top: 10px; font-size: 13px; color: #666;">
-                <strong>Failed test {test_num}/{total_tests}:</strong> {first_failure['name']}<br>
-                <div style="background: #f8f9fa; padding: 8px 10px; border-radius: 4px; margin-top: 6px; font-family: monospace; font-size: 12px;">
-                    <div><strong>Input:</strong> {args_repr}</div>
-                    <div style="margin-top: 4px;"><strong>Expected:</strong> {expected_repr}</div>
-                    <div style="margin-top: 4px;"><strong>Got:</strong> {got_repr}{type_info}</div>
-                </div>
-            </div>
-            """
+            html += f'<div style="margin-top: 10px; font-size: 13px; color: #666;">'
+            html += f'<strong>Failed test {test_num}/{total_tests}:</strong> {first_failure["name"]}<br>'
+            html += f'<div style="background: #f8f9fa; padding: 8px 10px; border-radius: 4px; margin-top: 6px; font-family: monospace; font-size: 12px;">'
+            html += f'<div><strong>Input:</strong> {args_repr}</div>'
+            html += f'<div style="margin-top: 4px;"><strong>Expected:</strong> {expected_repr}</div>'
+            html += f'<div style="margin-top: 4px;"><strong>Got:</strong> {got_repr}{type_info}</div>'
+            html += '</div></div>'
 
         html += "</div>"
         _display_notebook(html)
@@ -154,11 +142,10 @@ def check(func: Callable[..., Any]) -> dict[str, Any]:
         try:
             from IPython.display import HTML, display  # type: ignore[import-not-found]
 
-            html = f"""
-            <div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107;">
-                <span style="color: #856404;">no tests found for check({func_name})</span>
-            </div>
-            """
+            html = (
+                f'<div style="padding: 12px; background: #fff3cd; border-radius: 6px; border-left: 4px solid #ffc107; width: 350px; box-sizing: border-box;">'
+                f'<span style="color: #856404;">no tests found for check({func_name})</span></div>'
+            )
             display(HTML(html))
         except ImportError:
             print(f"no tests found for check({func_name})")
