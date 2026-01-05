@@ -86,12 +86,28 @@ def _display_results(
         """
 
         if first_failure:
+            test_num = first_failure.get('test_num', '?')
+            total_tests = first_failure.get('total_tests', '?')
+            args_repr = repr(first_failure['args']) if len(first_failure.get('args', [])) > 1 else repr(first_failure['args'][0]) if first_failure.get('args') else '()'
+            expected_repr = repr(first_failure['expected'])
+            got_repr = repr(first_failure['got']) if not first_failure.get('is_error') else first_failure['got']
+
+            # Show type mismatch info if types differ and it's not an error
+            type_info = ""
+            if not first_failure.get('is_error'):
+                expected_type = type(first_failure['expected']).__name__
+                got_type = type(first_failure['got']).__name__
+                if expected_type != got_type:
+                    type_info = f" <span style='color: #856404;'>(type: expected {expected_type}, got {got_type})</span>"
+
             html += f"""
             <div style="margin-top: 10px; font-size: 13px; color: #666;">
-                <strong>First failure:</strong> {first_failure['name']}<br>
-                <code style="background: #f8f9fa; padding: 2px 6px; border-radius: 3px;">
-                    Expected: {first_failure['expected']}, Got: {first_failure['got']}
-                </code>
+                <strong>Failed test {test_num}/{total_tests}:</strong> {first_failure['name']}<br>
+                <div style="background: #f8f9fa; padding: 8px 10px; border-radius: 4px; margin-top: 6px; font-family: monospace; font-size: 12px;">
+                    <div><strong>Input:</strong> {args_repr}</div>
+                    <div style="margin-top: 4px;"><strong>Expected:</strong> {expected_repr}</div>
+                    <div style="margin-top: 4px;"><strong>Got:</strong> {got_repr}{type_info}</div>
+                </div>
             </div>
             """
 
@@ -103,8 +119,23 @@ def _display_results(
         else:
             print(f"❌ Passed {passed}/{total} tests")
             if first_failure:
-                print(f"   First failure: {first_failure['name']}")
-                print(f"   Expected: {first_failure['expected']}, Got: {first_failure['got']}")
+                test_num = first_failure.get('test_num', '?')
+                total_tests = first_failure.get('total_tests', '?')
+                args_repr = repr(first_failure['args']) if len(first_failure.get('args', [])) > 1 else repr(first_failure['args'][0]) if first_failure.get('args') else '()'
+                expected_repr = repr(first_failure['expected'])
+                got_repr = repr(first_failure['got']) if not first_failure.get('is_error') else first_failure['got']
+
+                print(f"\n   Failed test {test_num}/{total_tests}: {first_failure['name']}")
+                print(f"   Input:    {args_repr}")
+                print(f"   Expected: {expected_repr}")
+                print(f"   Got:      {got_repr}")
+
+                # Show type mismatch info if types differ and it's not an error
+                if not first_failure.get('is_error'):
+                    expected_type = type(first_failure['expected']).__name__
+                    got_type = type(first_failure['got']).__name__
+                    if expected_type != got_type:
+                        print(f"   (type mismatch: expected {expected_type}, got {got_type})")
 
 
 def check(func: Callable[..., Any]) -> dict[str, Any]:
@@ -150,16 +181,23 @@ def check(func: Callable[..., Any]) -> dict[str, Any]:
                 if first_failure is None:
                     first_failure = {
                         "name": test["name"],
+                        "args": test["args"],
                         "expected": test["expected"],
                         "got": result,
+                        "test_num": passed + failed,
+                        "total_tests": len(tests),
                     }
         except Exception as e:
             failed += 1
             if first_failure is None:
                 first_failure = {
                     "name": test["name"],
+                    "args": test["args"],
                     "expected": test["expected"],
                     "got": f"Error: {e}",
+                    "test_num": passed + failed,
+                    "total_tests": len(tests),
+                    "is_error": True,
                 }
 
     _display_results(passed, failed, first_failure)
