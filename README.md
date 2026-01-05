@@ -117,8 +117,6 @@ from data_structures import GraphNode, build_graph_from_edges
 - jupyter >= 1.0.0
 - notebook >= 7.0.0
 - ipykernel >= 6.0.0
-- pytest >= 7.4.0
-- pytest-timeout >= 2.2.0
 - ipython >= 8.0.0
 
 ## License
