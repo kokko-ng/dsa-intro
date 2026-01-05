@@ -118,7 +118,3 @@ from data_structures import GraphNode, build_graph_from_edges
 - notebook >= 7.0.0
 - ipykernel >= 6.0.0
 - ipython >= 8.0.0
-
-## License
-
-This project is for educational purposes.
