@@ -1,7 +1,7 @@
 """
 Data Structures - Helper classes for DSA exercises.
 """
-from .linked_list import ListNode, create_linked_list, linked_list_to_list
+from .linked_list import ListNode, create_linked_list, linked_list_to_list, create_cycle
 from .tree import TreeNode, build_tree, tree_to_list
 from .graph import GraphNode, create_adjacency_list
 
@@ -9,6 +9,7 @@ __all__ = [
     "ListNode",
     "create_linked_list",
     "linked_list_to_list",
+    "create_cycle",
     "TreeNode",
     "build_tree",
     "tree_to_list",

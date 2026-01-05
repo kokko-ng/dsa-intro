@@ -1,16 +1,18 @@
 """
 Type definitions for DSA Checker.
 """
-from typing import Any, NotRequired, TypedDict
+from typing import NotRequired, TypedDict
 
 
 class TestCase(TypedDict):
     """A single test case."""
 
-    args: list[Any]
-    expected: Any
+    args: list[object]
+    expected: object
     name: str
     compare: NotRequired[str]
+    input_type: NotRequired[str]
+    output_type: NotRequired[str]
 
 
 TestCaseList = list[TestCase]

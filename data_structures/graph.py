@@ -1,22 +1,22 @@
 """
 Graph helper classes and utilities.
 """
-from typing import Optional, List, Dict
+from __future__ import annotations
 
 
 class GraphNode:
     """Graph node for adjacency list representation (used in clone graph, etc.)."""
 
-    def __init__(self, val: int = 0, neighbors: Optional[List['GraphNode']] = None):
+    def __init__(self, val: int = 0, neighbors: list[GraphNode] | None = None) -> None:
         self.val = val
-        self.neighbors = neighbors if neighbors is not None else []
+        self.neighbors: list[GraphNode] = neighbors if neighbors is not None else []
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         neighbor_vals = [n.val for n in self.neighbors]
         return f"GraphNode({self.val}, neighbors={neighbor_vals})"
 
 
-def create_adjacency_list(edges: Dict[int, List[int]]) -> Dict[int, List[int]]:
+def create_adjacency_list(edges: dict[int, list[int]]) -> dict[int, list[int]]:
     """
     Create an adjacency list from an edges dictionary.
 
@@ -34,7 +34,9 @@ def create_adjacency_list(edges: Dict[int, List[int]]) -> Dict[int, List[int]]:
     return edges
 
 
-def build_graph_from_edges(n: int, edges: List[List[int]], directed: bool = False) -> Dict[int, List[int]]:
+def build_graph_from_edges(
+    n: int, edges: list[list[int]], directed: bool = False
+) -> dict[int, list[int]]:
     """
     Build adjacency list from edge list.
 
@@ -53,7 +55,7 @@ def build_graph_from_edges(n: int, edges: List[List[int]], directed: bool = Fals
         >>> adj[1]
         [0, 2]
     """
-    graph = {i: [] for i in range(n)}
+    graph: dict[int, list[int]] = {i: [] for i in range(n)}
 
     for edge in edges:
         u, v = edge[0], edge[1]
@@ -64,7 +66,7 @@ def build_graph_from_edges(n: int, edges: List[List[int]], directed: bool = Fals
     return graph
 
 
-def build_graph_nodes(adj_list: List[List[int]]) -> Optional[GraphNode]:
+def build_graph_nodes(adj_list: list[list[int]]) -> GraphNode | None:
     """
     Build a graph of GraphNode objects from adjacency list.
 
@@ -89,7 +91,7 @@ def build_graph_nodes(adj_list: List[List[int]]) -> Optional[GraphNode]:
         return None
 
     # Create all nodes (1-indexed)
-    nodes = {i + 1: GraphNode(i + 1) for i in range(len(adj_list))}
+    nodes: dict[int, GraphNode] = {i + 1: GraphNode(i + 1) for i in range(len(adj_list))}
 
     # Connect neighbors
     for i, neighbors in enumerate(adj_list):
@@ -99,7 +101,7 @@ def build_graph_nodes(adj_list: List[List[int]]) -> Optional[GraphNode]:
     return nodes[1]
 
 
-def graph_to_adj_list(node: Optional[GraphNode]) -> List[List[int]]:
+def graph_to_adj_list(node: GraphNode | None) -> list[list[int]]:
     """
     Convert a graph of GraphNode objects back to adjacency list.
 
@@ -113,8 +115,8 @@ def graph_to_adj_list(node: Optional[GraphNode]) -> List[List[int]]:
         return []
 
     # BFS to collect all nodes
-    visited = {}
-    queue = [node]
+    visited: dict[int, GraphNode] = {}
+    queue: list[GraphNode] = [node]
     visited[node.val] = node
 
     while queue:
@@ -126,7 +128,7 @@ def graph_to_adj_list(node: Optional[GraphNode]) -> List[List[int]]:
 
     # Build adjacency list (sorted by node value)
     max_val = max(visited.keys())
-    adj_list = [[] for _ in range(max_val)]
+    adj_list: list[list[int]] = [[] for _ in range(max_val)]
 
     for val in range(1, max_val + 1):
         if val in visited:

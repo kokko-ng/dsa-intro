@@ -1,7 +1,8 @@
 """
 Tree helper classes and utilities.
 """
-from typing import Optional, List
+from __future__ import annotations
+
 from collections import deque
 
 
@@ -11,17 +12,17 @@ class TreeNode:
     def __init__(
         self,
         val: int = 0,
-        left: Optional['TreeNode'] = None,
-        right: Optional['TreeNode'] = None
-    ):
+        left: TreeNode | None = None,
+        right: TreeNode | None = None
+    ) -> None:
         self.val = val
         self.left = left
         self.right = right
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"TreeNode({self.val})"
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, TreeNode):
             return False
         # Compare trees recursively
@@ -32,7 +33,7 @@ class TreeNode:
         return left_eq and right_eq
 
 
-def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+def build_tree(values: list[int | None]) -> TreeNode | None:
     """
     Build binary tree from level-order array representation.
     None represents missing nodes.
@@ -58,7 +59,7 @@ def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
         return None
 
     root = TreeNode(values[0])
-    queue = deque([root])
+    queue: deque[TreeNode] = deque([root])
     i = 1
 
     while queue and i < len(values):
@@ -66,22 +67,24 @@ def build_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
 
         # Left child
         if i < len(values):
-            if values[i] is not None:
-                node.left = TreeNode(values[i])
+            val = values[i]
+            if val is not None:
+                node.left = TreeNode(val)
                 queue.append(node.left)
             i += 1
 
         # Right child
         if i < len(values):
-            if values[i] is not None:
-                node.right = TreeNode(values[i])
+            val = values[i]
+            if val is not None:
+                node.right = TreeNode(val)
                 queue.append(node.right)
             i += 1
 
     return root
 
 
-def tree_to_list(root: Optional[TreeNode]) -> List[Optional[int]]:
+def tree_to_list(root: TreeNode | None) -> list[int | None]:
     """
     Convert tree to level-order array representation.
 
@@ -99,8 +102,8 @@ def tree_to_list(root: Optional[TreeNode]) -> List[Optional[int]]:
     if not root:
         return []
 
-    result = []
-    queue = deque([root])
+    result: list[int | None] = []
+    queue: deque[TreeNode | None] = deque([root])
 
     while queue:
         node = queue.popleft()
@@ -119,11 +122,11 @@ def tree_to_list(root: Optional[TreeNode]) -> List[Optional[int]]:
     return result
 
 
-def inorder_traversal(root: Optional[TreeNode]) -> List[int]:
+def inorder_traversal(root: TreeNode | None) -> list[int]:
     """Return inorder traversal of tree."""
-    result = []
+    result: list[int] = []
 
-    def inorder(node):
+    def inorder(node: TreeNode | None) -> None:
         if node:
             inorder(node.left)
             result.append(node.val)
@@ -133,11 +136,11 @@ def inorder_traversal(root: Optional[TreeNode]) -> List[int]:
     return result
 
 
-def preorder_traversal(root: Optional[TreeNode]) -> List[int]:
+def preorder_traversal(root: TreeNode | None) -> list[int]:
     """Return preorder traversal of tree."""
-    result = []
+    result: list[int] = []
 
-    def preorder(node):
+    def preorder(node: TreeNode | None) -> None:
         if node:
             result.append(node.val)
             preorder(node.left)
@@ -147,11 +150,11 @@ def preorder_traversal(root: Optional[TreeNode]) -> List[int]:
     return result
 
 
-def postorder_traversal(root: Optional[TreeNode]) -> List[int]:
+def postorder_traversal(root: TreeNode | None) -> list[int]:
     """Return postorder traversal of tree."""
-    result = []
+    result: list[int] = []
 
-    def postorder(node):
+    def postorder(node: TreeNode | None) -> None:
         if node:
             postorder(node.left)
             postorder(node.right)

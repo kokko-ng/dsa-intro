@@ -1,24 +1,25 @@
 """
 Linked List helper classes and utilities.
 """
-from typing import Optional, List
+from __future__ import annotations
 
 
 class ListNode:
     """Singly linked list node."""
 
-    def __init__(self, val: int = 0, next: Optional['ListNode'] = None):
+    def __init__(self, val: int = 0, next: ListNode | None = None) -> None:
         self.val = val
         self.next = next
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"ListNode({self.val})"
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, ListNode):
             return False
         # Compare entire list
-        a, b = self, other
+        a: ListNode | None = self
+        b: ListNode | None = other
         while a and b:
             if a.val != b.val:
                 return False
@@ -26,7 +27,7 @@ class ListNode:
         return a is None and b is None
 
 
-def create_linked_list(values: List[int]) -> Optional[ListNode]:
+def create_linked_list(values: list[int]) -> ListNode | None:
     """
     Create a linked list from a list of values.
 
@@ -56,7 +57,7 @@ def create_linked_list(values: List[int]) -> Optional[ListNode]:
     return head
 
 
-def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
+def linked_list_to_list(head: ListNode | None) -> list[int]:
     """
     Convert linked list to Python list.
 
@@ -71,7 +72,7 @@ def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
         >>> linked_list_to_list(head)
         [1, 2, 3]
     """
-    result = []
+    result: list[int] = []
     current = head
 
     while current:
@@ -81,7 +82,7 @@ def linked_list_to_list(head: Optional[ListNode]) -> List[int]:
     return result
 
 
-def create_cycle(head: Optional[ListNode], pos: int) -> Optional[ListNode]:
+def create_cycle(head: ListNode | None, pos: int) -> ListNode | None:
     """
     Create a cycle in the linked list at the given position.
 
@@ -96,10 +97,10 @@ def create_cycle(head: Optional[ListNode], pos: int) -> Optional[ListNode]:
         return head
 
     # Find the tail and the node at position pos
-    cycle_node = None
-    current = head
+    cycle_node: ListNode | None = None
+    current: ListNode | None = head
     index = 0
-    tail = None
+    tail: ListNode | None = None
 
     while current:
         if index == pos:
