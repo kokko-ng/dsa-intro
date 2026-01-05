@@ -1,0 +1,58 @@
+"""
+Topic 01: Big O Notation & Complexity Analysis
+"""
+
+TOPIC_01_TESTS = {
+    "sum_array": [
+        {"args": [[1, 2, 3, 4, 5]], "expected": 15, "name": "basic positive"},
+        {"args": [[-1, 1, -2, 2]], "expected": 0, "name": "mixed zero sum"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[42]], "expected": 42, "name": "single element"},
+        {"args": [[-1, -2, -3]], "expected": -6, "name": "all negative"},
+        {"args": [[0, 0, 0]], "expected": 0, "name": "all zeros"},
+        {"args": [[1000000, 2000000, 3000000]], "expected": 6000000, "name": "large numbers"},
+        {"args": [list(range(100))], "expected": 4950, "name": "range 0-99"},
+    ],
+    "has_duplicates": [
+        {"args": [[1, 2, 3, 1]], "expected": True, "name": "duplicate at end"},
+        {"args": [[1, 2, 3, 4]], "expected": False, "name": "no duplicates"},
+        {"args": [[]], "expected": False, "name": "empty array"},
+        {"args": [[1]], "expected": False, "name": "single element"},
+        {"args": [[5, 5, 5, 5]], "expected": True, "name": "all same"},
+        {"args": [[-1, -2, -1]], "expected": True, "name": "negative duplicates"},
+        {"args": [[1, 2, 3, 4, 5, 1]], "expected": True, "name": "duplicate first-last"},
+        {"args": [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]], "expected": False, "name": "sequential unique"},
+    ],
+    "find_pair_with_sum": [
+        {"args": [[2, 7, 11, 15], 9], "expected": True, "name": "basic pair exists"},
+        {"args": [[1, 2, 3, 4], 10], "expected": False, "name": "no pair exists"},
+        {"args": [[3, 3], 6], "expected": True, "name": "duplicate elements"},
+        {"args": [[1, 2], 10], "expected": False, "name": "two elements no match"},
+        {"args": [[-1, -2, -3, 4], 1], "expected": True, "name": "negative numbers"},
+        {"args": [[-5, 5, 1, 2], 0], "expected": True, "name": "zero target"},
+        {"args": [[1, 5, 3, 7, 9], 10], "expected": True, "name": "multiple pairs possible"},
+        {"args": [[], 5], "expected": False, "name": "empty array"},
+        {"args": [[5], 10], "expected": False, "name": "single element"},
+    ],
+    "print_pairs": [
+        {"args": [[1, 2, 3]], "expected": [[1, 2], [1, 3], [2, 3]], "name": "three elements"},
+        {"args": [[1, 2, 3, 4]], "expected": [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]], "name": "four elements"},
+        {"args": [[]], "expected": [], "name": "empty array"},
+        {"args": [[1]], "expected": [], "name": "single element"},
+        {"args": [[5, 10]], "expected": [[5, 10]], "name": "two elements"},
+        {"args": [[1, 2, 3, 4, 5]], "expected": [[1, 2], [1, 3], [1, 4], [1, 5], [2, 3], [2, 4], [2, 5], [3, 4], [3, 5], [4, 5]], "name": "five elements"},
+    ],
+    "binary_search": [
+        {"args": [[-1, 0, 3, 5, 9, 12], 9], "expected": 4, "name": "target in middle"},
+        {"args": [[-1, 0, 3, 5, 9, 12], 2], "expected": -1, "name": "target not found"},
+        {"args": [[1, 2, 3, 4, 5], 1], "expected": 0, "name": "target at start"},
+        {"args": [[1, 2, 3, 4, 5], 5], "expected": 4, "name": "target at end"},
+        {"args": [[], 5], "expected": -1, "name": "empty array"},
+        {"args": [[5], 5], "expected": 0, "name": "single element found"},
+        {"args": [[5], 3], "expected": -1, "name": "single element not found"},
+        {"args": [[1, 3], 3], "expected": 1, "name": "two elements second"},
+        {"args": [[1, 3], 1], "expected": 0, "name": "two elements first"},
+        {"args": [[1, 3], 2], "expected": -1, "name": "two elements not found"},
+        {"args": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 7], "expected": 6, "name": "larger array"},
+    ],
+}
