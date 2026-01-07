@@ -77,23 +77,12 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[1], 5], "expected": [1], "name": "single element"},
     ],
     "reverse_string": [
-        {
-            "args": [["h", "e", "l", "l", "o"]],
-            "expected": ["o", "l", "l", "e", "h"],
-            "name": "hello",
-        },
-        {
-            "args": [["H", "a", "n", "n", "a", "h"]],
-            "expected": ["h", "a", "n", "n", "a", "H"],
-            "name": "Hannah",
-        },
-        {"args": [["a"]], "expected": ["a"], "name": "single char"},
-        {"args": [["a", "b"]], "expected": ["b", "a"], "name": "two chars"},
-        {
-            "args": [["a", "b", "c", "d"]],
-            "expected": ["d", "c", "b", "a"],
-            "name": "four chars",
-        },
+        {"args": ["hello"], "expected": "olleh", "name": "hello"},
+        {"args": ["Hannah"], "expected": "hannaH", "name": "Hannah"},
+        {"args": ["a"], "expected": "a", "name": "single char"},
+        {"args": ["ab"], "expected": "ba", "name": "two chars"},
+        {"args": ["abcd"], "expected": "dcba", "name": "four chars"},
+        {"args": [""], "expected": "", "name": "empty string"},
     ],
     "valid_anagram": [
         {"args": ["anagram", "nagaram"], "expected": True, "name": "valid anagram"},

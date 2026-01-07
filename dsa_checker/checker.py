@@ -174,13 +174,13 @@ def _compare_results(
         # Only pass if expected is an empty list (representing empty structure)
         return expected == []
     if compare_mode == "set":
-        if isinstance(result, (list, set)) and isinstance(expected, (list, set)):
+        if isinstance(result, list | set) and isinstance(expected, list | set):
             return set(result) == set(expected)
         return False
     elif compare_mode == "set_of_tuples":
 
         def to_tuple_set(items: object) -> set[tuple[object, ...] | object]:
-            if not isinstance(items, (list, set)):
+            if not isinstance(items, list | set):
                 return set()
             return {tuple(x) if isinstance(x, list) else x for x in items}
 
@@ -188,9 +188,9 @@ def _compare_results(
     elif compare_mode == "set_of_sets":
 
         def to_frozen_set(items: object) -> set[frozenset[object]]:
-            if not isinstance(items, (list, set)):
+            if not isinstance(items, list | set):
                 return set()
-            return {frozenset(x) for x in items if isinstance(x, (list, set))}
+            return {frozenset(x) for x in items if isinstance(x, list | set)}
 
         return to_frozen_set(result) == to_frozen_set(expected)
     elif compare_mode == "codec":
@@ -231,7 +231,7 @@ def _compare_results(
 def _display_notebook(html: str) -> None:
     """Display HTML in a Jupyter notebook."""
     try:
-        from IPython.display import HTML, display  # type: ignore[import-not-found]
+        from IPython.display import HTML, display
 
         display(HTML(html))
     except ImportError:
@@ -296,7 +296,7 @@ def _display_results(
             test_num = first_failure.get("test_num", "?")
             total_tests = first_failure.get("total_tests", "?")
             args = first_failure.get("args", [])
-            args_list = list(args) if isinstance(args, (list, tuple)) else []
+            args_list = list(args) if isinstance(args, list | tuple) else []
             args_repr = (
                 repr(args)
                 if len(args_list) > 1
@@ -350,7 +350,7 @@ def _display_results(
                 test_num = first_failure.get("test_num", "?")
                 total_tests = first_failure.get("total_tests", "?")
                 args = first_failure.get("args", [])
-                args_list = list(args) if isinstance(args, (list, tuple)) else []
+                args_list = list(args) if isinstance(args, list | tuple) else []
                 args_repr = (
                     repr(args)
                     if len(args_list) > 1
