@@ -457,6 +457,7 @@ def check(func: Callable[..., object]) -> dict[str, object]:
             compare_mode = test.get("compare")
 
             # Special handling for class-based data structures
+            compare_result: object  # Declare type once for all branches
             if compare_mode in (
                 "stack_ops",
                 "queue_ops",
@@ -468,35 +469,38 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                 cls = func()  # Get the class from factory function
                 obj = cls()  # type: ignore[operator]
                 test_args = test["args"]
-                methods: list[str] = test_args[0]  # type: ignore[index]
-                args_list: list[list[object]] = test_args[1]  # type: ignore[index]
+                methods = list(test_args[0])  # type: ignore[call-overload]
+                method_args_list = list(test_args[1])  # type: ignore[call-overload]
                 results: list[object] = []
-                for method_name, method_args in zip(methods, args_list, strict=False):
+                for method_name, method_args in zip(
+                    methods, method_args_list, strict=False
+                ):
                     method = getattr(obj, method_name)
-                    result = method(*method_args)
-                    results.append(result)
+                    r = method(*method_args)
+                    results.append(r)
                 compare_result = results
                 compare_expected = test["expected"]
             elif compare_mode == "union_find_ops":
                 # Union-Find: args[0] is n, args[1] is list of operations
                 cls = func()  # Get the UnionFind class
                 test_args = test["args"]
-                n: int = test_args[0]  # type: ignore[index]
-                ops: list[list[object]] = test_args[1]  # type: ignore[index]
+                n = int(test_args[0])  # type: ignore[call-overload]
+                ops = list(test_args[1])  # type: ignore[call-overload]
                 obj = cls(n)  # type: ignore[operator]
-                results = []
+                uf_results: list[object] = []
                 for op in ops:
-                    method_name = str(op[0])
-                    method_args = op[1:]
+                    op_list = list(op)
+                    method_name = str(op_list[0])
+                    method_args = op_list[1:]
                     method = getattr(obj, method_name)
-                    result = method(*method_args)
-                    results.append(result)
-                compare_result = results
+                    r = method(*method_args)
+                    uf_results.append(r)
+                compare_result = uf_results
                 compare_expected = test["expected"]
             elif compare_mode == "in_place_grid":
                 # For in-place modifications like sudoku
-                grid_arg: list[list[str]] = test["args"][0]  # type: ignore[index]
-                grid: list[list[str]] = [row[:] for row in grid_arg]
+                grid_arg = list(test["args"][0])  # type: ignore[call-overload]
+                grid = [list(row) for row in grid_arg]
                 func(grid)  # Modify in place
                 compare_result = grid
                 compare_expected = test["expected"]
@@ -504,7 +508,7 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                 # For MedianFinder class
                 cls = func()  # Get the class from factory function
                 obj = cls()  # type: ignore[operator]
-                nums: list[int] = test["args"][0]  # type: ignore[index]
+                nums = list(test["args"][0])  # type: ignore[call-overload]
                 for num in nums:
                     obj.addNum(num)
                 compare_result = obj.findMedian()
@@ -513,21 +517,19 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                 # For graph cloning - build graph from adjacency list, clone, convert back
                 from data_structures import GraphNode
 
-                adj_list_arg: list[list[int]] = test["args"][0]  # type: ignore[index]
+                adj_list_arg = list(test["args"][0])  # type: ignore[call-overload]
                 if not adj_list_arg or adj_list_arg == [[]]:
                     # Single node or empty
                     if adj_list_arg == [[]]:
                         node = GraphNode(1)
                         func(node)
-                        compare_result: object = [[]]
+                        compare_result = [[]]
                     else:
                         func(None)
                         compare_result = []
                 else:
                     # Build graph from adjacency list
-                    nodes = {
-                        i + 1: GraphNode(i + 1) for i in range(len(adj_list_arg))
-                    }
+                    nodes = {i + 1: GraphNode(i + 1) for i in range(len(adj_list_arg))}
                     for i, neighbors in enumerate(adj_list_arg):
                         for neighbor_val in neighbors:
                             nodes[i + 1].neighbors.append(nodes[neighbor_val])
@@ -536,12 +538,12 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                     visited: dict[int, list[int]] = {}
 
                     def to_adj_list(
-                        node: GraphNode, visited_dict: dict[int, list[int]]
+                        gnode: GraphNode, visited_dict: dict[int, list[int]]
                     ) -> None:
-                        if node.val in visited_dict:
+                        if gnode.val in visited_dict:
                             return
-                        visited_dict[node.val] = [n.val for n in node.neighbors]
-                        for n in node.neighbors:
+                        visited_dict[gnode.val] = [n.val for n in gnode.neighbors]
+                        for n in gnode.neighbors:
                             to_adj_list(n, visited_dict)
 
                     if cloned is not None:
