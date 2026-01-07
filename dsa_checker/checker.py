@@ -232,6 +232,9 @@ def _compare_results(
         "map_sum_ops",
         "magic_dict_ops",
         "union_find_ops",
+        "calendar_ops",
+        "stream_interval_ops",
+        "range_module_ops",
     ):
         # Special handling for class-based data structures
         # result is a class returned by the factory function
@@ -465,6 +468,9 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                 "word_dict_ops",
                 "map_sum_ops",
                 "magic_dict_ops",
+                "calendar_ops",
+                "stream_interval_ops",
+                "range_module_ops",
             ):
                 cls = func()  # Get the class from factory function
                 obj = cls()  # type: ignore[operator]
