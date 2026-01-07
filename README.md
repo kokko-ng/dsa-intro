@@ -95,9 +95,8 @@ The checker will run your solution against hidden test cases and display:
 ```
 dsa-intro/
 ├── notebooks/           # 15 Jupyter notebooks with exercises
-├── tests/               # Test files for all exercises
 ├── data_structures/     # Helper classes (ListNode, TreeNode, GraphNode)
-├── dsa_checker/         # Automated testing framework
+├── dsa_checker/         # Automated testing framework with test cases
 ├── requirements.txt     # Python dependencies
 └── pyproject.toml       # Project configuration
 ```

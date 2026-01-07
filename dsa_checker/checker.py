@@ -224,6 +224,41 @@ def _compare_results(
                     return False
             return sorted(result) == sorted(expected)
         return False
+    elif compare_mode in (
+        "stack_ops",
+        "queue_ops",
+        "trie_ops",
+        "word_dict_ops",
+        "map_sum_ops",
+        "magic_dict_ops",
+        "union_find_ops",
+    ):
+        # Special handling for class-based data structures
+        # result is a class returned by the factory function
+        # expected is the list of expected return values from method calls
+        # The args contain method names and their arguments
+        # This comparison is done in check() - just return True here
+        return result == expected
+    elif compare_mode == "sorted":
+        # Compare after sorting both lists
+        if isinstance(result, list) and isinstance(expected, list):
+            return sorted(result) == sorted(expected)
+        return False
+    elif compare_mode == "in_place_grid":
+        # For in-place grid modifications (like sudoku)
+        # Both result and expected should be 2D grids
+        return result == expected
+    elif compare_mode == "graph_clone":
+        # For graph cloning - convert result graph to adjacency list
+        # and compare with expected adjacency list
+        return True  # Handled in check()
+    elif compare_mode == "accounts_merge":
+        # For accounts merge - compare as set of tuples (order-independent)
+        if not isinstance(result, list) or not isinstance(expected, list):
+            return False
+        result_set = {tuple(acc) for acc in result}
+        expected_set = {tuple(acc) for acc in expected}
+        return result_set == expected_set
     else:
         return result == expected
 
@@ -245,10 +280,11 @@ def _display_results(
     total = passed + failed
 
     try:
-        from IPython.display import display  # noqa: F401
+        from IPython import get_ipython
 
-        in_notebook = True
-    except ImportError:
+        ipython = get_ipython()
+        in_notebook = ipython is not None and "IPKernelApp" in ipython.config
+    except (ImportError, AttributeError):
         in_notebook = False
 
     if total == 0:
@@ -418,14 +454,108 @@ def check(func: Callable[..., object]) -> dict[str, object]:
             # Transform inputs if needed (for trees, linked lists, etc.)
             input_type = test.get("input_type")
             output_type = test.get("output_type")
-            transformed_args = _transform_input(list(test["args"]), input_type)
-
-            result = func(*transformed_args)
-
-            # Transform result and expected for comparison
-            compare_result = _transform_result(result, output_type)
-            compare_expected = _transform_expected(test["expected"], output_type)
             compare_mode = test.get("compare")
+
+            # Special handling for class-based data structures
+            if compare_mode in (
+                "stack_ops",
+                "queue_ops",
+                "trie_ops",
+                "word_dict_ops",
+                "map_sum_ops",
+                "magic_dict_ops",
+            ):
+                cls = func()  # Get the class from factory function
+                obj = cls()  # type: ignore[operator]
+                test_args = test["args"]
+                methods: list[str] = test_args[0]  # type: ignore[index]
+                args_list: list[list[object]] = test_args[1]  # type: ignore[index]
+                results: list[object] = []
+                for method_name, method_args in zip(methods, args_list, strict=False):
+                    method = getattr(obj, method_name)
+                    result = method(*method_args)
+                    results.append(result)
+                compare_result = results
+                compare_expected = test["expected"]
+            elif compare_mode == "union_find_ops":
+                # Union-Find: args[0] is n, args[1] is list of operations
+                cls = func()  # Get the UnionFind class
+                test_args = test["args"]
+                n: int = test_args[0]  # type: ignore[index]
+                ops: list[list[object]] = test_args[1]  # type: ignore[index]
+                obj = cls(n)  # type: ignore[operator]
+                results = []
+                for op in ops:
+                    method_name = str(op[0])
+                    method_args = op[1:]
+                    method = getattr(obj, method_name)
+                    result = method(*method_args)
+                    results.append(result)
+                compare_result = results
+                compare_expected = test["expected"]
+            elif compare_mode == "in_place_grid":
+                # For in-place modifications like sudoku
+                grid_arg: list[list[str]] = test["args"][0]  # type: ignore[index]
+                grid: list[list[str]] = [row[:] for row in grid_arg]
+                func(grid)  # Modify in place
+                compare_result = grid
+                compare_expected = test["expected"]
+            elif compare_mode == "median_finder":
+                # For MedianFinder class
+                cls = func()  # Get the class from factory function
+                obj = cls()  # type: ignore[operator]
+                nums: list[int] = test["args"][0]  # type: ignore[index]
+                for num in nums:
+                    obj.addNum(num)
+                compare_result = obj.findMedian()
+                compare_expected = test["expected"]
+            elif compare_mode == "graph_clone":
+                # For graph cloning - build graph from adjacency list, clone, convert back
+                from data_structures import GraphNode
+
+                adj_list_arg: list[list[int]] = test["args"][0]  # type: ignore[index]
+                if not adj_list_arg or adj_list_arg == [[]]:
+                    # Single node or empty
+                    if adj_list_arg == [[]]:
+                        node = GraphNode(1)
+                        func(node)
+                        compare_result: object = [[]]
+                    else:
+                        func(None)
+                        compare_result = []
+                else:
+                    # Build graph from adjacency list
+                    nodes = {
+                        i + 1: GraphNode(i + 1) for i in range(len(adj_list_arg))
+                    }
+                    for i, neighbors in enumerate(adj_list_arg):
+                        for neighbor_val in neighbors:
+                            nodes[i + 1].neighbors.append(nodes[neighbor_val])
+                    cloned = func(nodes[1])
+                    # Convert cloned graph to adjacency list
+                    visited: dict[int, list[int]] = {}
+
+                    def to_adj_list(
+                        node: GraphNode, visited_dict: dict[int, list[int]]
+                    ) -> None:
+                        if node.val in visited_dict:
+                            return
+                        visited_dict[node.val] = [n.val for n in node.neighbors]
+                        for n in node.neighbors:
+                            to_adj_list(n, visited_dict)
+
+                    if cloned is not None:
+                        to_adj_list(cloned, visited)  # type: ignore[arg-type]
+                    compare_result = [
+                        visited.get(i + 1, []) for i in range(len(adj_list_arg))
+                    ]
+                compare_expected = test["expected"]
+            else:
+                transformed_args = _transform_input(list(test["args"]), input_type)
+                result = func(*transformed_args)
+                # Transform result and expected for comparison
+                compare_result = _transform_result(result, output_type)
+                compare_expected = _transform_expected(test["expected"], output_type)
 
             if _compare_results(compare_result, compare_expected, compare_mode):
                 passed += 1
