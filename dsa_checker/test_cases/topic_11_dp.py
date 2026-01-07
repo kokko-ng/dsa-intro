@@ -128,7 +128,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1, 5, 11, 5]], "expected": True, "name": "can partition"},
         {"args": [[1, 2, 3, 5]], "expected": False, "name": "cannot partition"},
         {"args": [[1, 1]], "expected": True, "name": "two equal"},
-        {"args": [[2, 2, 2]], "expected": True, "name": "odd count even sum"},
+        {"args": [[2, 2, 2]], "expected": False, "name": "odd count even sum"},
     ],
     "target_sum": [
         {"args": [[1, 1, 1, 1, 1], 3], "expected": 5, "name": "basic case"},
