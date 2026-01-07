@@ -108,7 +108,7 @@ The `data_structures` module provides helper classes for working with common str
 ```python
 from data_structures import ListNode, create_linked_list, linked_list_to_list
 from data_structures import TreeNode, build_tree, tree_to_list
-from data_structures import GraphNode, build_graph_from_edges
+from data_structures import GraphNode, create_adjacency_list
 ```
 
 ## Requirements
