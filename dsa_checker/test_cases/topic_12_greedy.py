@@ -48,6 +48,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         },
         {"args": ["eccbbbbdec"], "expected": [10], "name": "single partition"},
         {"args": ["abc"], "expected": [1, 1, 1], "name": "all unique"},
+        {"args": ["a"], "expected": [1], "name": "single character"},
     ],
     "valid_parenthesis_string": [
         {"args": ["()"], "expected": True, "name": "simple valid"},
@@ -55,6 +56,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": ["(*))"], "expected": True, "name": "star as open"},
         {"args": ["((*)"], "expected": True, "name": "star as close"},
         {"args": [")("], "expected": False, "name": "invalid order"},
+        {"args": [""], "expected": True, "name": "empty string"},
     ],
     "maximum_subarray_greedy": [
         {

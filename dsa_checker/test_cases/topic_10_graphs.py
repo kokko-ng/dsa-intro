@@ -37,6 +37,7 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": [[["0"]]], "expected": 0, "name": "no islands"},
         {"args": [[["1"]]], "expected": 1, "name": "single cell island"},
+        {"args": [[]], "expected": 0, "name": "empty grid"},
     ],
     "clone_graph": [
         {
@@ -109,6 +110,7 @@ TOPIC_10_TESTS: TestCasesDict = {
             "name": "no path",
         },
         {"args": ["a", "c", ["a", "b", "c"]], "expected": 2, "name": "short words"},
+        {"args": ["hit", "hit", ["hit"]], "expected": 1, "name": "same start and end"},
     ],
     "surrounded_regions": [
         {

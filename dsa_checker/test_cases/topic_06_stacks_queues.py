@@ -33,6 +33,12 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [["3"]], "expected": 3, "name": "single number"},
         {"args": [["3", "4", "+"]], "expected": 7, "name": "simple addition"},
         {"args": [["3", "4", "-"]], "expected": -1, "name": "simple subtraction"},
+        {"args": [["-3", "4", "+"]], "expected": 1, "name": "negative number"},
+        {
+            "args": [["6", "-3", "/"]],
+            "expected": -2,
+            "name": "division with negative truncates toward zero",
+        },
     ],
     "daily_temperatures": [
         {
@@ -44,6 +50,7 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [[60, 50, 40, 30]], "expected": [0, 0, 0, 0], "name": "decreasing"},
         {"args": [[30]], "expected": [0], "name": "single element"},
         {"args": [[30, 30, 30]], "expected": [0, 0, 0], "name": "all same"},
+        {"args": [[]], "expected": [], "name": "empty array"},
     ],
     "next_greater_element": [
         {
@@ -57,6 +64,7 @@ TOPIC_06_TESTS: TestCasesDict = {
             "expected": [7, 7, 7, 7, 7],
             "name": "all have greater",
         },
+        {"args": [[], [1, 2, 3]], "expected": [], "name": "empty nums1"},
     ],
     "simplify_path": [
         {"args": ["/home/"], "expected": "/home", "name": "trailing slash"},

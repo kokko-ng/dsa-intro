@@ -28,6 +28,12 @@ TOPIC_14_TESTS: TestCasesDict = {
             "name": "simple connect",
             "compare": "union_find_ops",
         },
+        {
+            "args": [3, [["union", 0, 0], ["connected", 0, 0]]],
+            "expected": [False, True],
+            "name": "self union",
+            "compare": "union_find_ops",
+        },
     ],
     "num_connected_components": [
         {

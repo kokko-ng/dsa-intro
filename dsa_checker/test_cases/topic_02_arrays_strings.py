@@ -75,6 +75,8 @@ TOPIC_02_TESTS: TestCasesDict = {
             "name": "rotate more than length",
         },
         {"args": [[1], 5], "expected": [1], "name": "single element"},
+        {"args": [[1, 2, 3], 0], "expected": [1, 2, 3], "name": "rotate by 0"},
+        {"args": [[], 3], "expected": [], "name": "empty array"},
     ],
     "reverse_string": [
         {"args": ["hello"], "expected": "olleh", "name": "hello"},
@@ -126,6 +128,10 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": ["words and 987"], "expected": 0, "name": "words first"},
         {"args": [""], "expected": 0, "name": "empty string"},
         {"args": ["   "], "expected": 0, "name": "only spaces"},
+        {"args": ["-91283472332"], "expected": -2147483648, "name": "underflow"},
+        {"args": ["91283472332"], "expected": 2147483647, "name": "overflow"},
+        {"args": ["+1"], "expected": 1, "name": "positive sign"},
+        {"args": ["+-12"], "expected": 0, "name": "invalid signs"},
     ],
     "move_zeroes": [
         {

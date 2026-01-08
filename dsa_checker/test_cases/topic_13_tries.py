@@ -24,6 +24,15 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "prefix check",
             "compare": "trie_ops",
         },
+        {
+            "args": [
+                ["insert", "search", "startsWith"],
+                [[""], [""], [""]],
+            ],
+            "expected": [None, True, True],
+            "name": "empty string",
+            "compare": "trie_ops",
+        },
     ],
     "word_search_ii": [
         {
@@ -125,6 +134,7 @@ TOPIC_13_TESTS: TestCasesDict = {
             "expected": "yodn",
             "name": "complex case",
         },
+        {"args": [["a"]], "expected": "a", "name": "single word"},
     ],
     "map_sum": [
         {

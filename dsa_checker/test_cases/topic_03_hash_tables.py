@@ -45,6 +45,12 @@ TOPIC_03_TESTS: TestCasesDict = {
             "name": "two empty strings",
             "compare": "set_of_sets",
         },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty array",
+            "compare": "set_of_sets",
+        },
     ],
     "isomorphic_strings": [
         {"args": ["egg", "add"], "expected": True, "name": "basic isomorphic"},

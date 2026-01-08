@@ -28,6 +28,7 @@ TOPIC_15_TESTS: TestCasesDict = {
             "expected": [[1, 4]],
             "name": "contained interval",
         },
+        {"args": [[]], "expected": [], "name": "empty array"},
     ],
     "insert_interval": [
         {
@@ -84,6 +85,7 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 2], [1, 2], [1, 2]]], "expected": 2, "name": "all same"},
         {"args": [[[1, 2], [2, 3]]], "expected": 0, "name": "no removal needed"},
         {"args": [[]], "expected": 0, "name": "empty"},
+        {"args": [[[1, 2]]], "expected": 0, "name": "single interval"},
     ],
     "minimum_number_of_arrows": [
         {
@@ -98,6 +100,7 @@ TOPIC_15_TESTS: TestCasesDict = {
         },
         {"args": [[[1, 2], [2, 3], [3, 4], [4, 5]]], "expected": 2, "name": "touching"},
         {"args": [[[1, 2]]], "expected": 1, "name": "single balloon"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "interval_list_intersections": [
         {

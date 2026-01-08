@@ -19,6 +19,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "expected": 3,
             "name": "sorted descending",
         },
+        {"args": [[-1, -2, -3, -4], 2], "expected": -2, "name": "negative numbers"},
     ],
     "merge_k_lists": [
         {
@@ -96,6 +97,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "four elements",
             "compare": "median_finder",
         },
+        {
+            "args": [[-1, -2, -3]],
+            "expected": -2.0,
+            "name": "negative numbers",
+            "compare": "median_finder",
+        },
     ],
     "k_closest_points": [
         {
@@ -114,6 +121,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "args": [[[0, 1], [1, 0]], 2],
             "expected": [[0, 1], [1, 0]],
             "name": "same distance",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[[5, 5]], 1],
+            "expected": [[5, 5]],
+            "name": "single point",
             "compare": "set_of_tuples",
         },
     ],

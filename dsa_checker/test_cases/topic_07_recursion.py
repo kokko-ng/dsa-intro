@@ -72,8 +72,15 @@ TOPIC_07_TESTS: TestCasesDict = {
             "name": "single element",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[]],
+            "expected": [[]],
+            "name": "empty array",
+            "compare": "set_of_tuples",
+        },
     ],
     "generate_parentheses": [
+        {"args": [0], "expected": [], "name": "n=0"},
         {"args": [1], "expected": ["()"], "name": "n=1", "compare": "set"},
         {"args": [2], "expected": ["(())", "()()"], "name": "n=2", "compare": "set"},
         {

@@ -97,6 +97,12 @@ TOPIC_05_TESTS: TestCasesDict = {
             "name": "no cycle",
             "input_type": "linked_list_cycle",
         },
+        {
+            "args": [[], -1],
+            "expected": False,
+            "name": "empty list",
+            "input_type": "linked_list_cycle",
+        },
     ],
     "remove_nth_from_end": [
         {
@@ -219,6 +225,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_lists",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[5], [5]],
+            "expected": [0, 1],
+            "name": "5 + 5 = 10 (carry)",
+            "input_type": "linked_lists",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "reorder_list": [
         {
@@ -246,6 +259,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[1, 2]],
             "expected": [1, 2],
             "name": "two nodes",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty list",
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },

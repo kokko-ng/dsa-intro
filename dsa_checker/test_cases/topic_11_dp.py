@@ -12,6 +12,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [4], "expected": 5, "name": "four steps"},
         {"args": [5], "expected": 8, "name": "five steps"},
         {"args": [10], "expected": 89, "name": "ten steps"},
+        {"args": [0], "expected": 1, "name": "zero steps"},
     ],
     "house_robber": [
         {"args": [[1, 2, 3, 1]], "expected": 4, "name": "basic case"},
@@ -20,6 +21,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1, 2]], "expected": 2, "name": "two houses"},
         {"args": [[2, 1, 1, 2]], "expected": 4, "name": "skip middle"},
         {"args": [[0, 0, 0]], "expected": 0, "name": "all zeros"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "coin_change": [
         {"args": [[1, 2, 5], 11], "expected": 3, "name": "basic case"},
@@ -35,6 +37,8 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[7, 7, 7, 7, 7]], "expected": 1, "name": "all same"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 5, "name": "already sorted"},
         {"args": [[5, 4, 3, 2, 1]], "expected": 1, "name": "decreasing"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[5]], "expected": 1, "name": "single element"},
     ],
     "unique_paths": [
         {"args": [3, 7], "expected": 28, "name": "3x7 grid"},
@@ -88,6 +92,8 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["06"], "expected": 0, "name": "leading zero"},
         {"args": ["11106"], "expected": 2, "name": "complex"},
         {"args": ["0"], "expected": 0, "name": "just zero"},
+        {"args": ["1"], "expected": 1, "name": "single digit"},
+        {"args": [""], "expected": 1, "name": "empty string"},
     ],
     "max_product_subarray": [
         {"args": [[2, 3, -2, 4]], "expected": 6, "name": "basic case"},
