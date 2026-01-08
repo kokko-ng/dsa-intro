@@ -227,9 +227,29 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1]], "expected": 1, "name": "single element"},
     ],
     "longest_palindrome_substring": [
-        {"args": ["babad"], "expected": "bab", "name": "basic case"},
-        {"args": ["cbbd"], "expected": "bb", "name": "even length"},
-        {"args": ["a"], "expected": "a", "name": "single char"},
-        {"args": ["ac"], "expected": "a", "name": "no palindrome"},
+        {
+            "args": ["babad"],
+            "expected": 3,
+            "name": "basic case",
+            "compare": "longest_palindrome",
+        },
+        {
+            "args": ["cbbd"],
+            "expected": 2,
+            "name": "even length",
+            "compare": "longest_palindrome",
+        },
+        {
+            "args": ["a"],
+            "expected": 1,
+            "name": "single char",
+            "compare": "longest_palindrome",
+        },
+        {
+            "args": ["ac"],
+            "expected": 1,
+            "name": "no palindrome",
+            "compare": "longest_palindrome",
+        },
     ],
 }

@@ -28,7 +28,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[1, 2, 3, 4, 5], 3], "expected": [1, 2], "name": "at start"},
         {
             "args": [[1, 1, 2, 3], 2],
-            "expected": [1, 1],
+            "expected": [1, 2],
             "name": "duplicate values as answer",
         },
     ],

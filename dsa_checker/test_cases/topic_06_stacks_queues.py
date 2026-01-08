@@ -39,6 +39,11 @@ TOPIC_06_TESTS: TestCasesDict = {
             "expected": -2,
             "name": "division with negative truncates toward zero",
         },
+        {
+            "args": [["-7", "3", "/"]],
+            "expected": -2,
+            "name": "truncation toward zero not floor",
+        },
     ],
     "daily_temperatures": [
         {
@@ -80,6 +85,11 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": ["/a/b/c"], "expected": "/a/b/c", "name": "no special chars"},
         {"args": ["/./././."], "expected": "/", "name": "all current dir"},
         {"args": ["/a/b/../.."], "expected": "/", "name": "back to root"},
+        {
+            "args": ["/a/.../b"],
+            "expected": "/a/.../b",
+            "name": "triple dots as dir name",
+        },
     ],
     "largest_rectangle_histogram": [
         {"args": [[2, 1, 5, 6, 2, 3]], "expected": 10, "name": "basic case"},
@@ -90,6 +100,7 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 9, "name": "increasing heights"},
         {"args": [[5, 4, 3, 2, 1]], "expected": 9, "name": "decreasing heights"},
+        {"args": [[0, 0, 0]], "expected": 0, "name": "all zeros"},
     ],
     "min_stack": [
         {

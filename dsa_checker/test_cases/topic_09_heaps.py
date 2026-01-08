@@ -20,6 +20,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "sorted descending",
         },
         {"args": [[-1, -2, -3, -4], 2], "expected": -2, "name": "negative numbers"},
+        {"args": [[5, 5, 5, 5], 2], "expected": 5, "name": "all identical values"},
     ],
     "merge_k_lists": [
         {

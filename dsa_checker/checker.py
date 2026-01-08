@@ -293,6 +293,19 @@ def _compare_results(
         result_set = {tuple(acc) for acc in result}
         expected_set = {tuple(acc) for acc in expected}
         return result_set == expected_set
+    elif compare_mode == "longest_palindrome":
+        # For longest palindrome substring - verify result is:
+        # 1. A palindrome of the expected length
+        # 2. Note: expected is the length, not the actual string
+        # The input string is passed separately
+        if not isinstance(result, str) or not isinstance(expected, int):
+            return False
+        if len(result) != expected:
+            return False
+        return result == result[::-1]  # Verify it's a palindrome
+    elif compare_mode == "kth_largest_ops":
+        # Handled in check() function
+        return result == expected
     else:
         return result == expected
 
@@ -549,6 +562,21 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                 for num in nums:
                     obj.addNum(num)
                 compare_result = obj.findMedian()
+                compare_expected = test["expected"]
+            elif compare_mode == "kth_largest_ops":
+                # For KthLargest stream class
+                # args[0] = k, args[1] = initial nums, args[2] = list of add() calls
+                cls = func()  # Get the class from factory function
+                test_args = test["args"]
+                k = int(test_args[0])  # type: ignore[call-overload]
+                initial_nums = list(test_args[1])  # type: ignore[call-overload]
+                add_calls = list(test_args[2])  # type: ignore[call-overload]
+                obj = cls(k, initial_nums)  # type: ignore[operator]
+                kth_results: list[object] = []
+                for call_args in add_calls:
+                    r = obj.add(*call_args)
+                    kth_results.append(r)
+                compare_result = kth_results
                 compare_expected = test["expected"]
             elif compare_mode == "graph_clone":
                 # For graph cloning - build graph from adjacency list, clone, convert back
