@@ -208,6 +208,13 @@ TOPIC_08_TESTS: TestCasesDict = {
             "input_type": "tree_with_targets",
             "output_type": "tree_val",
         },
+        {
+            "args": [[6, 2, 8, 0, 4, 7, 9], 4, 4],
+            "expected": 4,
+            "name": "same node",
+            "input_type": "tree_with_targets",
+            "output_type": "tree_val",
+        },
     ],
     "kth_smallest_bst": [
         {

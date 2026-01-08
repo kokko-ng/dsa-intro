@@ -33,6 +33,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[186, 419, 83, 408], 6249], "expected": 20, "name": "large coins"},
         {"args": [[5], 5], "expected": 1, "name": "single coin exact"},
         {"args": [[3, 7], 10], "expected": 2, "name": "multiple same denomination"},
+        {"args": [[5, 10], 3], "expected": -1, "name": "all coins larger than amount"},
     ],
     "longest_increasing_subsequence": [
         {"args": [[10, 9, 2, 5, 3, 7, 101, 18]], "expected": 4, "name": "basic case"},
@@ -95,6 +96,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["", ""], "expected": 0, "name": "both empty"},
         {"args": ["a", "b"], "expected": 1, "name": "single char replace"},
         {"args": ["ab", "ba"], "expected": 2, "name": "swap chars"},
+        {"args": ["abc", "xyz"], "expected": 3, "name": "no common characters"},
     ],
     "decode_ways": [
         {"args": ["12"], "expected": 2, "name": "basic case"},

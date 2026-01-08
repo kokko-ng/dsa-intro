@@ -154,6 +154,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "point at origin",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[[1, 2], [3, 4], [5, 6]], 3],
+            "expected": [[1, 2], [3, 4], [5, 6]],
+            "name": "k equals number of points",
+            "compare": "set_of_tuples",
+        },
     ],
     "reorganize_string": [
         {

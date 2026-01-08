@@ -124,6 +124,12 @@ TOPIC_03_TESTS: TestCasesDict = {
         },
         {"args": [[1], 1], "expected": [1], "name": "single element", "compare": "set"},
         {
+            "args": [[-1, -1, -2, -2, -2], 1],
+            "expected": [-2],
+            "name": "negative numbers k=1",
+            "compare": "set",
+        },
+        {
             "args": [[1, 2], 2],
             "expected": [1, 2],
             "name": "two elements k=2",

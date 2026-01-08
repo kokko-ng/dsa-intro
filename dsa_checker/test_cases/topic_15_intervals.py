@@ -118,6 +118,11 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 2]]], "expected": 1, "name": "single balloon"},
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[[1, 10], [2, 5], [3, 4]]], "expected": 1, "name": "all nested"},
+        {
+            "args": [[[-2147483648, 2147483647]]],
+            "expected": 1,
+            "name": "large boundary values",
+        },
     ],
     "interval_list_intersections": [
         {
@@ -136,6 +141,11 @@ TOPIC_15_TESTS: TestCasesDict = {
             "args": [[[1, 5]], [[1, 5]]],
             "expected": [[1, 5]],
             "name": "identical intervals",
+        },
+        {
+            "args": [[[0, 10], [15, 20]], [[5, 12], [18, 25]]],
+            "expected": [[5, 10], [18, 20]],
+            "name": "multiple partial overlaps",
         },
     ],
     "video_stitching": [

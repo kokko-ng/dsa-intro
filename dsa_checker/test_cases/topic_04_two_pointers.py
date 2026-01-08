@@ -26,6 +26,11 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[-1, 0], -1], "expected": [1, 2], "name": "with negative"},
         {"args": [[1, 2, 3, 4, 5], 9], "expected": [4, 5], "name": "at end"},
         {"args": [[1, 2, 3, 4, 5], 3], "expected": [1, 2], "name": "at start"},
+        {
+            "args": [[1, 1, 2, 3], 2],
+            "expected": [1, 1],
+            "name": "duplicate values as answer",
+        },
     ],
     "three_sum": [
         {
@@ -119,6 +124,7 @@ TOPIC_04_TESTS: TestCasesDict = {
             "expected": [0, 0, 1, 1, 2, 2, 2],
             "name": "reverse sorted",
         },
+        {"args": [[]], "expected": [], "name": "empty array"},
     ],
     "trapping_rain_water": [
         {
@@ -130,24 +136,33 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[4, 2, 3]], "expected": 1, "name": "simple trap"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 0, "name": "increasing"},
         {"args": [[5, 4, 3, 2, 1]], "expected": 0, "name": "decreasing"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[5]], "expected": 0, "name": "single element"},
+        {"args": [[1, 2]], "expected": 0, "name": "two elements"},
     ],
     "find_all_anagrams": [
         {"args": ["cbaebabacd", "abc"], "expected": [0, 6], "name": "basic case"},
         {"args": ["abab", "ab"], "expected": [0, 1, 2], "name": "overlapping"},
         {"args": ["abc", "def"], "expected": [], "name": "no anagrams"},
         {"args": ["a", "a"], "expected": [0], "name": "single char"},
+        {"args": ["", "abc"], "expected": [], "name": "empty string s"},
+        {"args": ["abc", ""], "expected": [], "name": "empty pattern p"},
     ],
     "longest_repeating_character_replacement": [
         {"args": ["ABAB", 2], "expected": 4, "name": "basic case"},
         {"args": ["AABABBA", 1], "expected": 4, "name": "with limit 1"},
         {"args": ["AAAA", 0], "expected": 4, "name": "all same"},
         {"args": ["ABCD", 2], "expected": 3, "name": "all different"},
+        {"args": ["", 2], "expected": 0, "name": "empty string"},
+        {"args": ["A", 0], "expected": 1, "name": "single char"},
     ],
     "permutation_in_string": [
         {"args": ["ab", "eidbaooo"], "expected": True, "name": "contains permutation"},
         {"args": ["ab", "eidboaoo"], "expected": False, "name": "no permutation"},
         {"args": ["a", "a"], "expected": True, "name": "single char"},
         {"args": ["abc", "bca"], "expected": True, "name": "exact anagram"},
+        {"args": ["", "abc"], "expected": True, "name": "empty s1"},
+        {"args": ["abc", ""], "expected": False, "name": "empty s2"},
     ],
     "max_consecutive_ones_iii": [
         {
@@ -162,12 +177,16 @@ TOPIC_04_TESTS: TestCasesDict = {
         },
         {"args": [[1, 1, 1], 0], "expected": 3, "name": "all ones no flips"},
         {"args": [[0, 0, 0], 3], "expected": 3, "name": "all zeros flip all"},
+        {"args": [[], 0], "expected": 0, "name": "empty array"},
+        {"args": [[1], 0], "expected": 1, "name": "single one"},
+        {"args": [[0], 1], "expected": 1, "name": "single zero flip it"},
     ],
     "boats_to_save_people": [
         {"args": [[1, 2], 3], "expected": 1, "name": "fit together"},
         {"args": [[3, 2, 2, 1], 3], "expected": 3, "name": "basic case"},
         {"args": [[3, 5, 3, 4], 5], "expected": 4, "name": "one each"},
         {"args": [[1, 1, 1, 1], 2], "expected": 2, "name": "pairs"},
+        {"args": [[3], 5], "expected": 1, "name": "single person"},
     ],
     "four_sum": [
         {
@@ -243,5 +262,8 @@ TOPIC_04_TESTS: TestCasesDict = {
             "expected": 11,
             "name": "full mountain",
         },
+        {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[1]], "expected": 0, "name": "single element"},
+        {"args": [[1, 2]], "expected": 0, "name": "two elements"},
     ],
 }

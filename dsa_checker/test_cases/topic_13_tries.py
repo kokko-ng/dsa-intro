@@ -42,6 +42,15 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "single character word",
             "compare": "trie_ops",
         },
+        {
+            "args": [
+                ["insert", "startsWith", "startsWith"],
+                [["apple"], ["app"], ["xyz"]],
+            ],
+            "expected": [None, True, False],
+            "name": "non-existent prefix",
+            "compare": "trie_ops",
+        },
     ],
     "word_search_ii": [
         {
@@ -73,6 +82,12 @@ TOPIC_13_TESTS: TestCasesDict = {
             "args": [[["a", "a"]], ["aaa"]],
             "expected": [],
             "name": "cannot reuse same cell",
+        },
+        {
+            "args": [[["a", "b"], ["b", "a"]], ["ab", "ba", "abba"]],
+            "expected": ["ab", "abba", "ba"],
+            "name": "words with adjacent duplicate letters",
+            "compare": "set",
         },
     ],
     "add_and_search_word": [
@@ -109,6 +124,12 @@ TOPIC_13_TESTS: TestCasesDict = {
             "args": [["search"], [["...."]]],
             "expected": [False],
             "name": "search empty dictionary",
+            "compare": "word_dict_ops",
+        },
+        {
+            "args": [["addWord", "addWord", "search"], [["abc"], ["def"], ["..."]]],
+            "expected": [None, None, True],
+            "name": "all wildcards pattern",
             "compare": "word_dict_ops",
         },
     ],

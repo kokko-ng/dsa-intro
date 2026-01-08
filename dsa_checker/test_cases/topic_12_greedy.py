@@ -63,6 +63,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": ["abc"], "expected": [1, 1, 1], "name": "all unique"},
         {"args": ["a"], "expected": [1], "name": "single character"},
         {"args": [""], "expected": [], "name": "empty string"},
+        {"args": ["aaaa"], "expected": [4], "name": "all same character"},
     ],
     "valid_parenthesis_string": [
         {"args": ["()"], "expected": True, "name": "simple valid"},

@@ -104,6 +104,17 @@ TOPIC_01_TESTS: TestCasesDict = {
             "expected": 6,
             "name": "larger array",
         },
+        {"args": [[-5, -3, -1, 0, 2], -3], "expected": 1, "name": "negative numbers"},
+        {
+            "args": [[1, 2, 3, 4, 5], 0],
+            "expected": -1,
+            "name": "target smaller than all",
+        },
+        {
+            "args": [[1, 2, 3, 4, 5], 6],
+            "expected": -1,
+            "name": "target larger than all",
+        },
     ],
     "find_max": [
         {"args": [[1, 5, 3, 9, 2]], "expected": 9, "name": "basic case"},

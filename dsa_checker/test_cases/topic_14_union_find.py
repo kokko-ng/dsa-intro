@@ -40,6 +40,12 @@ TOPIC_14_TESTS: TestCasesDict = {
             "name": "already connected union",
             "compare": "union_find_ops",
         },
+        {
+            "args": [1, [["connected", 0, 0]]],
+            "expected": [True],
+            "name": "single element connected to itself",
+            "compare": "union_find_ops",
+        },
     ],
     "num_connected_components": [
         {
@@ -140,6 +146,20 @@ TOPIC_14_TESTS: TestCasesDict = {
             "args": [[]],
             "expected": [],
             "name": "empty accounts",
+            "compare": "accounts_merge",
+        },
+        {
+            "args": [
+                [
+                    ["Alex", "a@mail.com", "b@mail.com"],
+                    ["Alex", "b@mail.com", "c@mail.com"],
+                    ["Alex", "c@mail.com", "d@mail.com"],
+                ]
+            ],
+            "expected": [
+                ["Alex", "a@mail.com", "b@mail.com", "c@mail.com", "d@mail.com"],
+            ],
+            "name": "chain merge multiple accounts",
             "compare": "accounts_merge",
         },
     ],

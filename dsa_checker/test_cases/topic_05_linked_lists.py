@@ -407,6 +407,20 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty list",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[1]],
+            "expected": [1],
+            "name": "single node",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "delete_duplicates_ii": [
         {
@@ -430,6 +444,20 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty list",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[1]],
+            "expected": [1],
+            "name": "single node",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "partition_list": [
         {
@@ -450,6 +478,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[1], 0],
             "expected": [1],
             "name": "single node",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[], 0],
+            "expected": [],
+            "name": "empty list",
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },
@@ -510,6 +545,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[1]],
             "expected": [1],
             "name": "single node",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty list",
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },

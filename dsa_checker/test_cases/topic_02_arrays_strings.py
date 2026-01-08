@@ -39,6 +39,7 @@ TOPIC_02_TESTS: TestCasesDict = {
             "expected": True,
             "name": "duplicate at end",
         },
+        {"args": [[-1, -2, -3, -1]], "expected": True, "name": "negative duplicates"},
     ],
     "max_subarray": [
         {
@@ -56,6 +57,8 @@ TOPIC_02_TESTS: TestCasesDict = {
             "expected": -1,
             "name": "all negative pick max",
         },
+        {"args": [[0, 0, 0]], "expected": 0, "name": "all zeros"},
+        {"args": [[-1, 0, -2]], "expected": 0, "name": "zero is max"},
     ],
     "rotate_array": [
         {
@@ -148,6 +151,8 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[1, 2, 3]], "expected": [1, 2, 3], "name": "no zeros"},
         {"args": [[0, 0, 0]], "expected": [0, 0, 0], "name": "all zeros"},
         {"args": [[1, 0]], "expected": [1, 0], "name": "two elements"},
+        {"args": [[]], "expected": [], "name": "empty array"},
+        {"args": [[1]], "expected": [1], "name": "single non-zero"},
     ],
     "spiral_matrix": [
         {

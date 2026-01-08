@@ -111,6 +111,20 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": [2, [[1, 0], [0, 1]]], "expected": [], "name": "cycle impossible"},
         {"args": [1, []], "expected": [0], "name": "single course"},
+        {"args": [0, []], "expected": [], "name": "zero courses"},
+        {
+            "args": [3, []],
+            "expected": [0, 1, 2],
+            "name": "no prerequisites any order",
+            "compare": "valid_course_order",
+        },
+        {
+            "args": [3, [[1, 0]]],
+            "expected": [0, 1, 2],
+            "name": "disconnected courses",
+            "compare": "valid_course_order",
+        },
+        {"args": [1, [[0, 0]]], "expected": [], "name": "self-dependency"},
     ],
     "pacific_atlantic": [
         {
@@ -149,6 +163,12 @@ TOPIC_10_TESTS: TestCasesDict = {
             "args": [[[1], [2], [3]]],
             "expected": [[0, 0], [1, 0], [2, 0]],
             "name": "single column",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty grid",
             "compare": "set_of_tuples",
         },
     ],
@@ -215,6 +235,22 @@ TOPIC_10_TESTS: TestCasesDict = {
             "name": "all border O's - nothing captured",
             "compare": "in_place_grid",
         },
+        {
+            "args": [
+                [
+                    ["X", "X", "X"],
+                    ["X", "X", "X"],
+                    ["X", "X", "X"],
+                ]
+            ],
+            "expected": [
+                ["X", "X", "X"],
+                ["X", "X", "X"],
+                ["X", "X", "X"],
+            ],
+            "name": "all X - no O's to capture",
+            "compare": "in_place_grid",
+        },
     ],
     "graph_valid_tree": [
         {
@@ -250,6 +286,9 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": [4, []], "expected": 4, "name": "all disconnected"},
         {"args": [1, []], "expected": 1, "name": "single node"},
+        {"args": [0, []], "expected": 0, "name": "zero nodes"},
+        {"args": [3, [[0, 1], [1, 2], [0, 2]]], "expected": 1, "name": "triangle"},
+        {"args": [2, [[0, 1]]], "expected": 1, "name": "two connected nodes"},
     ],
     "alien_dictionary": [
         {
