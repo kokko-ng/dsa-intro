@@ -38,6 +38,28 @@ TOPIC_10_TESTS: TestCasesDict = {
         {"args": [[["0"]]], "expected": 0, "name": "no islands"},
         {"args": [[["1"]]], "expected": 1, "name": "single cell island"},
         {"args": [[]], "expected": 0, "name": "empty grid"},
+        {
+            "args": [
+                [
+                    ["0", "0", "0"],
+                    ["0", "0", "0"],
+                    ["0", "0", "0"],
+                ]
+            ],
+            "expected": 0,
+            "name": "all water",
+        },
+        {
+            "args": [
+                [
+                    ["1", "1", "1"],
+                    ["1", "1", "1"],
+                    ["1", "1", "1"],
+                ]
+            ],
+            "expected": 1,
+            "name": "all land",
+        },
     ],
     "clone_graph": [
         {
@@ -165,6 +187,22 @@ TOPIC_10_TESTS: TestCasesDict = {
             "args": [[["O"]]],
             "expected": [["O"]],
             "name": "single O",
+            "compare": "in_place_grid",
+        },
+        {
+            "args": [
+                [
+                    ["O", "O", "O"],
+                    ["O", "X", "O"],
+                    ["O", "O", "O"],
+                ]
+            ],
+            "expected": [
+                ["O", "O", "O"],
+                ["O", "X", "O"],
+                ["O", "O", "O"],
+            ],
+            "name": "all border O's - nothing captured",
             "compare": "in_place_grid",
         },
     ],

@@ -110,6 +110,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[-1, -2, -3]], "expected": 6, "name": "all negatives"},
         {"args": [[0, 2]], "expected": 2, "name": "zero at start"},
         {"args": [[-2, -3, 0, -2, -40]], "expected": 80, "name": "zeros splitting"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "min_path_sum": [
         {

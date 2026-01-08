@@ -90,6 +90,18 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "single char",
             "compare": "word_dict_ops",
         },
+        {
+            "args": [["addWord", "search", "search"], [[""], [""], ["a"]]],
+            "expected": [None, True, False],
+            "name": "empty string",
+            "compare": "word_dict_ops",
+        },
+        {
+            "args": [["search"], [["...."]]],
+            "expected": [False],
+            "name": "search empty dictionary",
+            "compare": "word_dict_ops",
+        },
     ],
     "replace_words": [
         {
@@ -160,6 +172,7 @@ TOPIC_13_TESTS: TestCasesDict = {
             "expected": "a",
             "name": "two single letters lexicographic",
         },
+        {"args": [[]], "expected": "", "name": "empty list"},
     ],
     "map_sum": [
         {

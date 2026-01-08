@@ -58,6 +58,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[1, 2, 1]], "expected": 2, "name": "three elements"},
         {"args": [[2, 3, 4, 5, 18, 17, 6]], "expected": 17, "name": "tall in middle"},
         {"args": [[5, 5, 5, 5]], "expected": 15, "name": "all equal heights"},
+        {"args": [[0, 0]], "expected": 0, "name": "zero heights"},
     ],
     "max_sum_subarray_k": [
         {
@@ -69,6 +70,11 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[5], 1], "expected": 5, "name": "single element"},
         {"args": [[1, 2, 3, 4, 5], 2], "expected": 9, "name": "window at end"},
         {"args": [[-1, -2, -3, -4], 2], "expected": -3, "name": "all negative"},
+        {
+            "args": [[-1, 4, -2, 5, 3], 3],
+            "expected": 6,
+            "name": "mixed positive negative",
+        },
     ],
     "longest_substring_without_repeating": [
         {"args": ["abcabcbb"], "expected": 3, "name": "basic case"},

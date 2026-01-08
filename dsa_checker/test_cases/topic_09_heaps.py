@@ -50,6 +50,13 @@ TOPIC_09_TESTS: TestCasesDict = {
             "input_type": "k_linked_lists",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[[-3, -1, 2], [-2, 0, 1]]],
+            "expected": [-3, -2, -1, 0, 1, 2],
+            "name": "with negative numbers",
+            "input_type": "k_linked_lists",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "top_k_frequent_elements": [
         {
@@ -141,6 +148,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "with negatives and origin",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[[0, 0]], 1],
+            "expected": [[0, 0]],
+            "name": "point at origin",
+            "compare": "set_of_tuples",
+        },
     ],
     "reorganize_string": [
         {
@@ -183,6 +196,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "expected": 6,
             "name": "many types no idle needed",
         },
+        {"args": [["A", "A", "A"], 2], "expected": 7, "name": "all identical tasks"},
     ],
     "last_stone_weight": [
         {"args": [[2, 7, 4, 1, 8, 1]], "expected": 1, "name": "basic case"},

@@ -56,6 +56,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": ["eccbbbbdec"], "expected": [10], "name": "single partition"},
         {"args": ["abc"], "expected": [1, 1, 1], "name": "all unique"},
         {"args": ["a"], "expected": [1], "name": "single character"},
+        {"args": [""], "expected": [], "name": "empty string"},
     ],
     "valid_parenthesis_string": [
         {"args": ["()"], "expected": True, "name": "simple valid"},
@@ -78,6 +79,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[5, 4, -1, 7, 8]], "expected": 23, "name": "mostly positive"},
         {"args": [[-1]], "expected": -1, "name": "single negative"},
         {"args": [[-2, -1]], "expected": -1, "name": "all negative"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "assign_cookies": [
         {"args": [[1, 2, 3], [1, 1]], "expected": 1, "name": "not enough cookies"},

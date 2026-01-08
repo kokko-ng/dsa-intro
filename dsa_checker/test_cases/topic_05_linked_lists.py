@@ -246,6 +246,20 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_lists",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[], [1, 2]],
+            "expected": [1, 2],
+            "name": "first list empty",
+            "input_type": "linked_lists",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[1, 2], []],
+            "expected": [1, 2],
+            "name": "second list empty",
+            "input_type": "linked_lists",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "reorder_list": [
         {

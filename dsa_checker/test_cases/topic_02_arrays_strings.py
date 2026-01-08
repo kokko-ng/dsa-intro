@@ -96,6 +96,7 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": ["listen", "silent"], "expected": True, "name": "listen silent"},
         {"args": ["hello", "world"], "expected": False, "name": "different words"},
         {"args": ["aab", "aba"], "expected": True, "name": "repeated chars"},
+        {"args": ["abc", "ab"], "expected": False, "name": "different lengths"},
     ],
     "longest_common_prefix": [
         {
@@ -122,6 +123,7 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[1, 1, 1, 1]], "expected": [1, 1, 1, 1], "name": "all ones"},
         {"args": [[2, 3, 4, 5]], "expected": [60, 40, 30, 24], "name": "no zeros"},
         {"args": [[-2, -3, 4]], "expected": [-12, -8, 6], "name": "negative numbers"},
+        {"args": [[5]], "expected": [1], "name": "single element"},
     ],
     "string_to_integer": [
         {"args": ["42"], "expected": 42, "name": "positive number"},

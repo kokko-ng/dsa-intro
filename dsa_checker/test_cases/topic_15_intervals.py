@@ -29,6 +29,11 @@ TOPIC_15_TESTS: TestCasesDict = {
             "name": "contained interval",
         },
         {"args": [[]], "expected": [], "name": "empty array"},
+        {
+            "args": [[[-5, -1], [-3, 2], [4, 8]]],
+            "expected": [[-5, 2], [4, 8]],
+            "name": "negative intervals",
+        },
     ],
     "insert_interval": [
         {
@@ -57,6 +62,11 @@ TOPIC_15_TESTS: TestCasesDict = {
             "expected": [[1, 2], [3, 5]],
             "name": "no overlap before",
         },
+        {
+            "args": [[[-10, -5], [0, 5]], [-7, -2]],
+            "expected": [[-10, -2], [0, 5]],
+            "name": "negative intervals",
+        },
     ],
     "meeting_rooms": [
         {
@@ -75,6 +85,7 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 5], [5, 10]]], "expected": 1, "name": "adjacent meetings"},
         {"args": [[[1, 5], [2, 6], [3, 7]]], "expected": 3, "name": "all overlap"},
         {"args": [[]], "expected": 0, "name": "no meetings"},
+        {"args": [[[1, 10]]], "expected": 1, "name": "single meeting"},
     ],
     "non_overlapping_intervals": [
         {

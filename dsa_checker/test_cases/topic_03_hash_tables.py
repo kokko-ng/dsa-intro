@@ -60,6 +60,7 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": ["a", "b"], "expected": True, "name": "single chars"},
         {"args": ["ab", "aa"], "expected": False, "name": "different patterns"},
         {"args": ["badc", "baba"], "expected": False, "name": "mapping conflict"},
+        {"args": ["abc", "de"], "expected": False, "name": "different lengths"},
     ],
     "word_pattern": [
         {
@@ -166,7 +167,19 @@ TOPIC_03_TESTS: TestCasesDict = {
         {
             "args": [[], [1, 2, 3]],
             "expected": [],
-            "name": "one empty",
+            "name": "first empty",
+            "compare": "set",
+        },
+        {
+            "args": [[1, 2, 3], []],
+            "expected": [],
+            "name": "second empty",
+            "compare": "set",
+        },
+        {
+            "args": [[], []],
+            "expected": [],
+            "name": "both empty",
             "compare": "set",
         },
         {

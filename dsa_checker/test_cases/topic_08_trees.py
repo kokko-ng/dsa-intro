@@ -132,6 +132,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "name": "complete tree",
             "input_type": "tree",
         },
+        {
+            "args": [[1, None, 2, None, 3]],
+            "expected": [[1], [2], [3]],
+            "name": "right skewed tree",
+            "input_type": "tree",
+        },
     ],
     "validate_bst": [
         {
@@ -247,6 +253,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "args": [[1, 2, 3], [2, 1, 3]],
             "expected": [1, 2, 3],
             "name": "simple tree",
+            "output_type": "tree_to_list",
+        },
+        {
+            "args": [[], []],
+            "expected": [],
+            "name": "empty arrays",
             "output_type": "tree_to_list",
         },
     ],

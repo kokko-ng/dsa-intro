@@ -75,6 +75,11 @@ TOPIC_14_TESTS: TestCasesDict = {
             "expected": [3, 1],
             "name": "duplicate edge",
         },
+        {
+            "args": [[[1, 2], [2, 3], [3, 4], [4, 5], [5, 1]]],
+            "expected": [5, 1],
+            "name": "5-node cycle",
+        },
     ],
     "accounts_merge": [
         {
@@ -117,6 +122,12 @@ TOPIC_14_TESTS: TestCasesDict = {
                 ["Kevin", "Kevin0@m.co", "Kevin3@m.co", "Kevin5@m.co"],
             ],
             "name": "no merges",
+            "compare": "accounts_merge",
+        },
+        {
+            "args": [[["Alice", "alice@mail.com"]]],
+            "expected": [["Alice", "alice@mail.com"]],
+            "name": "single account",
             "compare": "accounts_merge",
         },
     ],

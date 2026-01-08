@@ -65,6 +65,11 @@ TOPIC_06_TESTS: TestCasesDict = {
             "name": "all have greater",
         },
         {"args": [[], [1, 2, 3]], "expected": [], "name": "empty nums1"},
+        {
+            "args": [[1, 2, 3], [1, 2, 3]],
+            "expected": [2, 3, -1],
+            "name": "nums1 equals nums2",
+        },
     ],
     "simplify_path": [
         {"args": ["/home/"], "expected": "/home", "name": "trailing slash"},
@@ -132,6 +137,15 @@ TOPIC_06_TESTS: TestCasesDict = {
             ],
             "expected": [None, None, 1, None, 2, 3],
             "name": "interleaved push pop",
+            "compare": "queue_ops",
+        },
+        {
+            "args": [
+                ["push", "push", "push", "pop", "pop", "peek"],
+                [[1], [2], [3], [], [], []],
+            ],
+            "expected": [None, None, None, 1, 2, 3],
+            "name": "multiple pops then peek",
             "compare": "queue_ops",
         },
     ],
