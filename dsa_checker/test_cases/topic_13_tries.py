@@ -33,6 +33,15 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "empty string",
             "compare": "trie_ops",
         },
+        {
+            "args": [
+                ["insert", "search", "startsWith", "search"],
+                [["a"], ["a"], ["a"], ["b"]],
+            ],
+            "expected": [None, True, True, False],
+            "name": "single character word",
+            "compare": "trie_ops",
+        },
     ],
     "word_search_ii": [
         {
@@ -194,6 +203,15 @@ TOPIC_13_TESTS: TestCasesDict = {
             "args": [["sum"], [["nonexistent"]]],
             "expected": [0],
             "name": "sum with no matching prefix",
+            "compare": "map_sum_ops",
+        },
+        {
+            "args": [
+                ["insert", "sum", "insert", "sum"],
+                [["", 5], [""], ["ab", 3], [""]],
+            ],
+            "expected": [None, 5, None, 8],
+            "name": "empty key",
             "compare": "map_sum_ops",
         },
     ],

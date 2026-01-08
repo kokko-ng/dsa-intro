@@ -34,6 +34,12 @@ TOPIC_14_TESTS: TestCasesDict = {
             "name": "self union",
             "compare": "union_find_ops",
         },
+        {
+            "args": [3, [["union", 0, 1], ["union", 0, 1], ["connected", 0, 1]]],
+            "expected": [True, False, True],
+            "name": "already connected union",
+            "compare": "union_find_ops",
+        },
     ],
     "num_connected_components": [
         {
@@ -128,6 +134,12 @@ TOPIC_14_TESTS: TestCasesDict = {
             "args": [[["Alice", "alice@mail.com"]]],
             "expected": [["Alice", "alice@mail.com"]],
             "name": "single account",
+            "compare": "accounts_merge",
+        },
+        {
+            "args": [[]],
+            "expected": [],
+            "name": "empty accounts",
             "compare": "accounts_merge",
         },
     ],

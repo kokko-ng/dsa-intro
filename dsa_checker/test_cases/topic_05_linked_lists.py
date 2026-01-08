@@ -71,6 +71,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_lists",
             "output_type": "linked_list_to_list",
         },
+        {
+            "args": [[1, 2, 3], []],
+            "expected": [1, 2, 3],
+            "name": "second empty",
+            "input_type": "linked_lists",
+            "output_type": "linked_list_to_list",
+        },
     ],
     "has_cycle": [
         {
@@ -83,6 +90,12 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[1, 2], 0],
             "expected": True,
             "name": "cycle at head",
+            "input_type": "linked_list_cycle",
+        },
+        {
+            "args": [[1, 2, 3], 2],
+            "expected": True,
+            "name": "cycle at tail",
             "input_type": "linked_list_cycle",
         },
         {
@@ -287,6 +300,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[1, 2]],
             "expected": [1, 2],
             "name": "two nodes",
+            "input_type": "linked_list",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[1, 2, 3]],
+            "expected": [1, 3, 2],
+            "name": "three nodes",
             "input_type": "linked_list",
             "output_type": "linked_list_to_list",
         },

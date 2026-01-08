@@ -37,6 +37,12 @@ TOPIC_12_TESTS: TestCasesDict = {
             "name": "start at end",
         },
         {"args": [[5], [4]], "expected": 0, "name": "single station"},
+        {"args": [[1, 1, 1], [1, 1, 1]], "expected": 0, "name": "exact balance"},
+        {
+            "args": [[3, 3, 4], [3, 4, 4]],
+            "expected": -1,
+            "name": "total gas less than cost",
+        },
     ],
     "candy": [
         {"args": [[1, 0, 2]], "expected": 5, "name": "basic case"},
@@ -68,6 +74,9 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": ["***"], "expected": True, "name": "only stars"},
         {"args": ["(((******))"], "expected": True, "name": "multiple stars needed"},
         {"args": ["()(())"], "expected": True, "name": "nested valid"},
+        {"args": ["("], "expected": False, "name": "unbalanced open"},
+        {"args": [")"], "expected": False, "name": "unbalanced close"},
+        {"args": ["(*)("], "expected": False, "name": "unbalanced with star"},
     ],
     "maximum_subarray_greedy": [
         {

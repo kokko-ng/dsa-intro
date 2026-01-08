@@ -31,6 +31,8 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1, 2, 5], 100], "expected": 20, "name": "larger amount"},
         {"args": [[2, 5, 10], 3], "expected": -1, "name": "no solution"},
         {"args": [[186, 419, 83, 408], 6249], "expected": 20, "name": "large coins"},
+        {"args": [[5], 5], "expected": 1, "name": "single coin exact"},
+        {"args": [[3, 7], 10], "expected": 2, "name": "multiple same denomination"},
     ],
     "longest_increasing_subsequence": [
         {"args": [[10, 9, 2, 5, 3, 7, 101, 18]], "expected": 4, "name": "basic case"},
@@ -40,6 +42,8 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[5, 4, 3, 2, 1]], "expected": 1, "name": "decreasing"},
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[5]], "expected": 1, "name": "single element"},
+        {"args": [[-1, 0, 1, 2]], "expected": 4, "name": "negative numbers"},
+        {"args": [[1, 3, 2, 4]], "expected": 3, "name": "two elements same length"},
     ],
     "unique_paths": [
         {"args": [3, 7], "expected": 28, "name": "3x7 grid"},
@@ -88,6 +92,9 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["", "abc"], "expected": 3, "name": "empty to string"},
         {"args": ["abc", ""], "expected": 3, "name": "string to empty"},
         {"args": ["abc", "abc"], "expected": 0, "name": "identical"},
+        {"args": ["", ""], "expected": 0, "name": "both empty"},
+        {"args": ["a", "b"], "expected": 1, "name": "single char replace"},
+        {"args": ["ab", "ba"], "expected": 2, "name": "swap chars"},
     ],
     "decode_ways": [
         {"args": ["12"], "expected": 2, "name": "basic case"},

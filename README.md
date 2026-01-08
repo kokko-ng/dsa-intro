@@ -49,17 +49,23 @@ This repository provides a structured, self-paced learning platform for masterin
    cd dsa-intro
    ```
 
-2. Install dependencies:
+2. Create and activate a virtual environment (recommended):
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Launch Jupyter:
+4. Launch Jupyter:
    ```bash
    jupyter notebook
    ```
 
-4. Open any notebook from the `notebooks/` directory to begin learning.
+5. Open any notebook from the `notebooks/` directory to begin learning.
 
 ## Usage
 

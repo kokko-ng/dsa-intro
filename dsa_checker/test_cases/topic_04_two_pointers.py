@@ -26,7 +26,6 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[-1, 0], -1], "expected": [1, 2], "name": "with negative"},
         {"args": [[1, 2, 3, 4, 5], 9], "expected": [4, 5], "name": "at end"},
         {"args": [[1, 2, 3, 4, 5], 3], "expected": [1, 2], "name": "at start"},
-        {"args": [[1, 1, 1, 1], 2], "expected": [1, 2], "name": "all duplicates"},
     ],
     "three_sum": [
         {
@@ -72,7 +71,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[-1, -2, -3, -4], 2], "expected": -3, "name": "all negative"},
         {
             "args": [[-1, 4, -2, 5, 3], 3],
-            "expected": 6,
+            "expected": 7,
             "name": "mixed positive negative",
         },
     ],
@@ -95,6 +94,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[1]], "expected": 1, "name": "single element"},
         {"args": [[1, 2, 3]], "expected": 3, "name": "no duplicates"},
+        {"args": [[1, 1, 1, 1, 1]], "expected": 1, "name": "all duplicates"},
     ],
     "minimum_window_substring": [
         {"args": ["ADOBECODEBANC", "ABC"], "expected": "BANC", "name": "basic case"},

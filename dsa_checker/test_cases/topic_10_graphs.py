@@ -98,6 +98,8 @@ TOPIC_10_TESTS: TestCasesDict = {
             "expected": False,
             "name": "3-node cycle",
         },
+        {"args": [1, [[0, 0]]], "expected": False, "name": "self-dependency"},
+        {"args": [0, []], "expected": True, "name": "zero courses"},
     ],
     "course_schedule_order": [
         {"args": [2, [[1, 0]]], "expected": [0, 1], "name": "simple order"},
@@ -143,6 +145,12 @@ TOPIC_10_TESTS: TestCasesDict = {
             "name": "single row",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[[1], [2], [3]]],
+            "expected": [[0, 0], [1, 0], [2, 0]],
+            "name": "single column",
+            "compare": "set_of_tuples",
+        },
     ],
     "word_ladder": [
         {
@@ -157,6 +165,8 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": ["a", "c", ["a", "b", "c"]], "expected": 2, "name": "short words"},
         {"args": ["hit", "hit", ["hit"]], "expected": 1, "name": "same start and end"},
+        {"args": ["hit", "cog", []], "expected": 0, "name": "empty word list"},
+        {"args": ["a", "b", ["b"]], "expected": 2, "name": "direct transformation"},
     ],
     "surrounded_regions": [
         {
