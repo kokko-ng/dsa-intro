@@ -82,6 +82,11 @@ TOPIC_01_TESTS: TestCasesDict = {
             ],
             "name": "five elements",
         },
+        {
+            "args": [[-1, 0, 1]],
+            "expected": [[-1, 0], [-1, 1], [0, 1]],
+            "name": "negative numbers",
+        },
     ],
     "binary_search": [
         {"args": [[-1, 0, 3, 5, 9, 12], 9], "expected": 4, "name": "target in middle"},

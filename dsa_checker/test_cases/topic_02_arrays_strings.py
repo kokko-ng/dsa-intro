@@ -26,6 +26,7 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[3, 3, 3, 3]], "expected": 0, "name": "all same price"},
         {"args": [[1, 2, 3, 4, 5]], "expected": 4, "name": "increasing prices"},
         {"args": [[2, 4, 1, 7]], "expected": 6, "name": "buy after first sell point"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "contains_duplicate": [
         {"args": [[1, 2, 3, 1]], "expected": True, "name": "has duplicate"},
@@ -120,6 +121,7 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": [[0, 0]], "expected": [0, 0], "name": "two zeros"},
         {"args": [[1, 1, 1, 1]], "expected": [1, 1, 1, 1], "name": "all ones"},
         {"args": [[2, 3, 4, 5]], "expected": [60, 40, 30, 24], "name": "no zeros"},
+        {"args": [[-2, -3, 4]], "expected": [-12, -8, 6], "name": "negative numbers"},
     ],
     "string_to_integer": [
         {"args": ["42"], "expected": 42, "name": "positive number"},

@@ -72,6 +72,9 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": ["/home//foo/"], "expected": "/home/foo", "name": "double slash"},
         {"args": ["/a/./b/../../c/"], "expected": "/c", "name": "complex path"},
         {"args": ["/"], "expected": "/", "name": "root only"},
+        {"args": ["/a/b/c"], "expected": "/a/b/c", "name": "no special chars"},
+        {"args": ["/./././."], "expected": "/", "name": "all current dir"},
+        {"args": ["/a/b/../.."], "expected": "/", "name": "back to root"},
     ],
     "largest_rectangle_histogram": [
         {"args": [[2, 1, 5, 6, 2, 3]], "expected": 10, "name": "basic case"},
@@ -79,6 +82,9 @@ TOPIC_06_TESTS: TestCasesDict = {
         {"args": [[1]], "expected": 1, "name": "single bar"},
         {"args": [[1, 1, 1, 1]], "expected": 4, "name": "all same"},
         {"args": [[6, 2, 5, 4, 5, 1, 6]], "expected": 12, "name": "complex"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[1, 2, 3, 4, 5]], "expected": 9, "name": "increasing heights"},
+        {"args": [[5, 4, 3, 2, 1]], "expected": 9, "name": "decreasing heights"},
     ],
     "min_stack": [
         {
@@ -96,6 +102,15 @@ TOPIC_06_TESTS: TestCasesDict = {
             "name": "update min",
             "compare": "stack_ops",
         },
+        {
+            "args": [
+                ["push", "push", "push", "pop", "getMin"],
+                [[0], [0], [0], [], []],
+            ],
+            "expected": [None, None, None, None, 0],
+            "name": "duplicate min values",
+            "compare": "stack_ops",
+        },
     ],
     "implement_queue_with_stacks": [
         {
@@ -108,6 +123,15 @@ TOPIC_06_TESTS: TestCasesDict = {
             "args": [["push", "pop", "empty"], [[1], [], []]],
             "expected": [None, 1, True],
             "name": "push pop empty",
+            "compare": "queue_ops",
+        },
+        {
+            "args": [
+                ["push", "push", "pop", "push", "pop", "pop"],
+                [[1], [2], [], [3], [], []],
+            ],
+            "expected": [None, None, 1, None, 2, 3],
+            "name": "interleaved push pop",
             "compare": "queue_ops",
         },
     ],

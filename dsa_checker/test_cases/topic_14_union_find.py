@@ -53,6 +53,11 @@ TOPIC_14_TESTS: TestCasesDict = {
             "expected": 1,
             "name": "star graph",
         },
+        {
+            "args": [3, [[0, 1], [0, 1]]],
+            "expected": 2,
+            "name": "duplicate edges",
+        },
     ],
     "redundant_connection": [
         {
@@ -120,6 +125,8 @@ TOPIC_14_TESTS: TestCasesDict = {
         {"args": [[0, 3, 7, 2, 5, 8, 4, 6, 0, 1]], "expected": 9, "name": "0 to 8"},
         {"args": [[]], "expected": 0, "name": "empty array"},
         {"args": [[1]], "expected": 1, "name": "single element"},
+        {"args": [[-5, -4, -3, -2, -1]], "expected": 5, "name": "negative numbers"},
+        {"args": [[5, 5, 5, 5]], "expected": 1, "name": "all duplicates"},
     ],
     "satisfiability_of_equations": [
         {"args": [["a==b", "b!=a"]], "expected": False, "name": "contradiction"},
@@ -131,6 +138,13 @@ TOPIC_14_TESTS: TestCasesDict = {
             "name": "indirect contradiction",
         },
         {"args": [["a!=a"]], "expected": False, "name": "self inequality"},
+        {"args": [["a==a"]], "expected": True, "name": "self equality"},
+        {"args": [[]], "expected": True, "name": "empty equations"},
+        {
+            "args": [["a!=b", "b!=c", "a!=c"]],
+            "expected": True,
+            "name": "all inequalities",
+        },
     ],
     "friend_circles": [
         {

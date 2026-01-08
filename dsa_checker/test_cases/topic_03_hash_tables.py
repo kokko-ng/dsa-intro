@@ -84,6 +84,7 @@ TOPIC_03_TESTS: TestCasesDict = {
         },
         {"args": ["a", "dog"], "expected": True, "name": "single word"},
         {"args": ["abc", "dog cat fish"], "expected": True, "name": "all different"},
+        {"args": ["ab", "dog"], "expected": False, "name": "length mismatch"},
     ],
     "longest_consecutive": [
         {"args": [[100, 4, 200, 1, 3, 2]], "expected": 4, "name": "basic sequence"},
@@ -97,6 +98,8 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": [[1, 2, 3, 4, 5]], "expected": 5, "name": "all consecutive"},
         {"args": [[5, 4, 3, 2, 1]], "expected": 5, "name": "reverse order"},
         {"args": [[1, 3, 5, 7]], "expected": 1, "name": "no consecutive"},
+        {"args": [[-3, -2, -1, 0, 1]], "expected": 5, "name": "negative to positive"},
+        {"args": [[1, 1, 1, 1]], "expected": 1, "name": "all duplicates"},
     ],
     "subarray_sum_equals_k": [
         {"args": [[1, 1, 1], 2], "expected": 2, "name": "basic case"},
@@ -105,6 +108,8 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": [[1], 0], "expected": 0, "name": "single element no match"},
         {"args": [[0, 0, 0], 0], "expected": 6, "name": "all zeros"},
         {"args": [[-1, -1, 1], 0], "expected": 1, "name": "negative numbers"},
+        {"args": [[], 0], "expected": 0, "name": "empty array"},
+        {"args": [[1, -1, 1, -1], 0], "expected": 4, "name": "alternating sum to zero"},
     ],
     "top_k_frequent": [
         {
@@ -130,6 +135,12 @@ TOPIC_03_TESTS: TestCasesDict = {
             "args": [[3, 3, 3, 1, 1, 2], 1],
             "expected": [3],
             "name": "k=1",
+            "compare": "set",
+        },
+        {
+            "args": [[1, 1, 2, 2, 3, 3], 3],
+            "expected": [1, 2, 3],
+            "name": "all same frequency",
             "compare": "set",
         },
     ],

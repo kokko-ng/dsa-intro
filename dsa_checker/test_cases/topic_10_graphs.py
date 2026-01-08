@@ -53,6 +53,12 @@ TOPIC_10_TESTS: TestCasesDict = {
             "compare": "graph_clone",
         },
         {"args": [[]], "expected": [], "name": "empty graph", "compare": "graph_clone"},
+        {
+            "args": [[[2], [1]]],
+            "expected": [[2], [1]],
+            "name": "two connected nodes",
+            "compare": "graph_clone",
+        },
     ],
     "course_schedule": [
         {"args": [2, [[1, 0]]], "expected": True, "name": "simple dependency"},
@@ -63,6 +69,12 @@ TOPIC_10_TESTS: TestCasesDict = {
             "args": [4, [[1, 0], [2, 0], [3, 1], [3, 2]]],
             "expected": True,
             "name": "diamond",
+        },
+        {"args": [3, []], "expected": True, "name": "multiple independent courses"},
+        {
+            "args": [3, [[0, 1], [1, 2], [2, 0]]],
+            "expected": False,
+            "name": "3-node cycle",
         },
     ],
     "course_schedule_order": [
@@ -95,6 +107,18 @@ TOPIC_10_TESTS: TestCasesDict = {
             "args": [[[1]]],
             "expected": [[0, 0]],
             "name": "single cell",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[[1, 1], [1, 1]]],
+            "expected": [[0, 0], [0, 1], [1, 0], [1, 1]],
+            "name": "all same height",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[[1, 2, 3]]],
+            "expected": [[0, 0], [0, 1], [0, 2]],
+            "name": "single row",
             "compare": "set_of_tuples",
         },
     ],
@@ -157,6 +181,13 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": [5, [[0, 1], [2, 3]]], "expected": False, "name": "disconnected"},
         {"args": [1, []], "expected": True, "name": "single node"},
+        {"args": [2, [[0, 1]]], "expected": True, "name": "two nodes one edge"},
+        {"args": [2, []], "expected": False, "name": "two nodes no edges"},
+        {
+            "args": [3, [[0, 1], [1, 2], [0, 2]]],
+            "expected": False,
+            "name": "triangle cycle",
+        },
     ],
     "count_connected_components": [
         {
@@ -180,6 +211,14 @@ TOPIC_10_TESTS: TestCasesDict = {
         },
         {"args": [["z", "x"]], "expected": "zx", "name": "two words"},
         {"args": [["z", "x", "z"]], "expected": "", "name": "invalid order"},
+        {
+            "args": [["abc"]],
+            "expected": "abc",
+            "name": "single word",
+            "compare": "alien_order",
+        },
+        {"args": [["abc", "ab"]], "expected": "", "name": "prefix comes after"},
+        {"args": [["a", "b", "c"]], "expected": "abc", "name": "single char words"},
     ],
     "rotting_oranges": [
         {

@@ -163,6 +163,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_list",
             "output_type": "node_val",
         },
+        {
+            "args": [[1, 2, 3]],
+            "expected": 2,
+            "name": "three nodes",
+            "input_type": "linked_list",
+            "output_type": "node_val",
+        },
     ],
     "is_palindrome_list": [
         {
@@ -229,6 +236,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "args": [[5], [5]],
             "expected": [0, 1],
             "name": "5 + 5 = 10 (carry)",
+            "input_type": "linked_lists",
+            "output_type": "linked_list_to_list",
+        },
+        {
+            "args": [[1, 8], [0]],
+            "expected": [1, 8],
+            "name": "different lengths",
             "input_type": "linked_lists",
             "output_type": "linked_list_to_list",
         },

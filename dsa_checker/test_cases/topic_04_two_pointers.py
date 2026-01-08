@@ -26,6 +26,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[-1, 0], -1], "expected": [1, 2], "name": "with negative"},
         {"args": [[1, 2, 3, 4, 5], 9], "expected": [4, 5], "name": "at end"},
         {"args": [[1, 2, 3, 4, 5], 3], "expected": [1, 2], "name": "at start"},
+        {"args": [[1, 1, 1, 1], 2], "expected": [1, 2], "name": "all duplicates"},
     ],
     "three_sum": [
         {
@@ -56,6 +57,7 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": [[4, 3, 2, 1, 4]], "expected": 16, "name": "same height ends"},
         {"args": [[1, 2, 1]], "expected": 2, "name": "three elements"},
         {"args": [[2, 3, 4, 5, 18, 17, 6]], "expected": 17, "name": "tall in middle"},
+        {"args": [[5, 5, 5, 5]], "expected": 15, "name": "all equal heights"},
     ],
     "max_sum_subarray_k": [
         {
@@ -93,6 +95,9 @@ TOPIC_04_TESTS: TestCasesDict = {
         {"args": ["a", "a"], "expected": "a", "name": "single char match"},
         {"args": ["a", "aa"], "expected": "", "name": "impossible"},
         {"args": ["aa", "aa"], "expected": "aa", "name": "exact match"},
+        {"args": ["", "a"], "expected": "", "name": "empty s"},
+        {"args": ["abc", ""], "expected": "", "name": "empty t"},
+        {"args": ["aaab", "aab"], "expected": "aab", "name": "repeated chars in t"},
     ],
     "sort_colors": [
         {

@@ -86,6 +86,11 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 2], [2, 3]]], "expected": 0, "name": "no removal needed"},
         {"args": [[]], "expected": 0, "name": "empty"},
         {"args": [[[1, 2]]], "expected": 0, "name": "single interval"},
+        {
+            "args": [[[-100, -50], [-75, -25], [0, 25], [10, 30]]],
+            "expected": 2,
+            "name": "negative intervals",
+        },
     ],
     "minimum_number_of_arrows": [
         {
@@ -101,6 +106,7 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 2], [2, 3], [3, 4], [4, 5]]], "expected": 2, "name": "touching"},
         {"args": [[[1, 2]]], "expected": 1, "name": "single balloon"},
         {"args": [[]], "expected": 0, "name": "empty array"},
+        {"args": [[[1, 10], [2, 5], [3, 4]]], "expected": 1, "name": "all nested"},
     ],
     "interval_list_intersections": [
         {
@@ -114,6 +120,12 @@ TOPIC_15_TESTS: TestCasesDict = {
         {"args": [[[1, 3], [5, 9]], []], "expected": [], "name": "one empty"},
         {"args": [[], [[4, 8], [10, 12]]], "expected": [], "name": "other empty"},
         {"args": [[[1, 7]], [[3, 10]]], "expected": [[3, 7]], "name": "single overlap"},
+        {"args": [[[1, 3]], [[5, 7]]], "expected": [], "name": "no intersection"},
+        {
+            "args": [[[1, 5]], [[1, 5]]],
+            "expected": [[1, 5]],
+            "name": "identical intervals",
+        },
     ],
     "video_stitching": [
         {

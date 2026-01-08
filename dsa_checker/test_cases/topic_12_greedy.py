@@ -12,6 +12,8 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[2, 0, 0]], "expected": True, "name": "jump over zeros"},
         {"args": [[1, 1, 1, 1]], "expected": True, "name": "all ones"},
         {"args": [[1, 0, 1, 0]], "expected": False, "name": "stuck in middle"},
+        {"args": [[0, 1]], "expected": False, "name": "zero at start blocks"},
+        {"args": [[5, 0, 0, 0, 0, 1]], "expected": True, "name": "large first jump"},
     ],
     "jump_game_ii": [
         {"args": [[2, 3, 1, 1, 4]], "expected": 2, "name": "basic case"},
@@ -19,6 +21,8 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[1]], "expected": 0, "name": "single element"},
         {"args": [[1, 2]], "expected": 1, "name": "two elements"},
         {"args": [[1, 1, 1, 1]], "expected": 3, "name": "all ones"},
+        {"args": [[10, 1, 1, 1, 1]], "expected": 1, "name": "reach end in one jump"},
+        {"args": [[2, 1]], "expected": 1, "name": "exactly reach end"},
     ],
     "gas_station": [
         {
@@ -39,6 +43,9 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[1, 2, 2]], "expected": 4, "name": "plateau"},
         {"args": [[1, 3, 2, 2, 1]], "expected": 7, "name": "complex"},
         {"args": [[1]], "expected": 1, "name": "single child"},
+        {"args": [[1, 2, 3, 4, 5]], "expected": 15, "name": "strictly increasing"},
+        {"args": [[5, 4, 3, 2, 1]], "expected": 15, "name": "strictly decreasing"},
+        {"args": [[1, 1, 1, 1]], "expected": 4, "name": "all same rating"},
     ],
     "partition_labels": [
         {
@@ -57,6 +64,9 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": ["((*)"], "expected": True, "name": "star as close"},
         {"args": [")("], "expected": False, "name": "invalid order"},
         {"args": [""], "expected": True, "name": "empty string"},
+        {"args": ["***"], "expected": True, "name": "only stars"},
+        {"args": ["(((******))"], "expected": True, "name": "multiple stars needed"},
+        {"args": ["()(())"], "expected": True, "name": "nested valid"},
     ],
     "maximum_subarray_greedy": [
         {

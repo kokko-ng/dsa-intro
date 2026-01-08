@@ -55,6 +55,16 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "no matches",
         },
         {"args": [[["a"]], ["a"]], "expected": ["a"], "name": "single cell match"},
+        {
+            "args": [[["a", "b"], ["c", "d"]], []],
+            "expected": [],
+            "name": "empty words list",
+        },
+        {
+            "args": [[["a", "a"]], ["aaa"]],
+            "expected": [],
+            "name": "cannot reuse same cell",
+        },
     ],
     "add_and_search_word": [
         {
@@ -100,6 +110,16 @@ TOPIC_13_TESTS: TestCasesDict = {
             "expected": "the cat was rat by the bat",
             "name": "overlapping roots",
         },
+        {
+            "args": [[], "hello world"],
+            "expected": "hello world",
+            "name": "empty dictionary",
+        },
+        {
+            "args": [["xyz"], "hello world"],
+            "expected": "hello world",
+            "name": "no matching roots",
+        },
     ],
     "longest_word": [
         {
@@ -135,6 +155,11 @@ TOPIC_13_TESTS: TestCasesDict = {
             "name": "complex case",
         },
         {"args": [["a"]], "expected": "a", "name": "single word"},
+        {
+            "args": [["b", "a"]],
+            "expected": "a",
+            "name": "two single letters lexicographic",
+        },
     ],
     "map_sum": [
         {
@@ -150,6 +175,12 @@ TOPIC_13_TESTS: TestCasesDict = {
             "args": [["insert", "insert", "sum"], [["a", 1], ["a", 2], ["a"]]],
             "expected": [None, None, 2],
             "name": "overwrite value",
+            "compare": "map_sum_ops",
+        },
+        {
+            "args": [["sum"], [["nonexistent"]]],
+            "expected": [0],
+            "name": "sum with no matching prefix",
             "compare": "map_sum_ops",
         },
     ],

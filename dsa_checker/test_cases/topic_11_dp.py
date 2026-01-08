@@ -30,6 +30,7 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[1], 1], "expected": 1, "name": "exact coin"},
         {"args": [[1, 2, 5], 100], "expected": 20, "name": "larger amount"},
         {"args": [[2, 5, 10], 3], "expected": -1, "name": "no solution"},
+        {"args": [[186, 419, 83, 408], 6249], "expected": 20, "name": "large coins"},
     ],
     "longest_increasing_subsequence": [
         {"args": [[10, 9, 2, 5, 3, 7, 101, 18]], "expected": 4, "name": "basic case"},
@@ -78,6 +79,8 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["abc", "def"], "expected": 0, "name": "no common"},
         {"args": ["", "abc"], "expected": 0, "name": "empty string"},
         {"args": ["abcba", "abcbcba"], "expected": 5, "name": "longer strings"},
+        {"args": ["", ""], "expected": 0, "name": "both empty"},
+        {"args": ["a", "a"], "expected": 1, "name": "single char match"},
     ],
     "edit_distance": [
         {"args": ["horse", "ros"], "expected": 3, "name": "basic case"},
@@ -94,6 +97,9 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": ["0"], "expected": 0, "name": "just zero"},
         {"args": ["1"], "expected": 1, "name": "single digit"},
         {"args": [""], "expected": 1, "name": "empty string"},
+        {"args": ["27"], "expected": 1, "name": "invalid two-digit"},
+        {"args": ["10"], "expected": 1, "name": "ten only"},
+        {"args": ["2101"], "expected": 1, "name": "consecutive zeros"},
     ],
     "max_product_subarray": [
         {"args": [[2, 3, -2, 4]], "expected": 6, "name": "basic case"},
@@ -101,6 +107,9 @@ TOPIC_11_TESTS: TestCasesDict = {
         {"args": [[-2, 3, -4]], "expected": 24, "name": "negative times negative"},
         {"args": [[2]], "expected": 2, "name": "single element"},
         {"args": [[-2]], "expected": -2, "name": "single negative"},
+        {"args": [[-1, -2, -3]], "expected": 6, "name": "all negatives"},
+        {"args": [[0, 2]], "expected": 2, "name": "zero at start"},
+        {"args": [[-2, -3, 0, -2, -40]], "expected": 80, "name": "zeros splitting"},
     ],
     "min_path_sum": [
         {

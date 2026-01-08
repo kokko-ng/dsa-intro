@@ -88,6 +88,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "name": "single node same",
             "input_type": "trees",
         },
+        {
+            "args": [[], [1]],
+            "expected": False,
+            "name": "one empty one not",
+            "input_type": "trees",
+        },
     ],
     "is_symmetric": [
         {
@@ -154,6 +160,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "name": "equal values invalid",
             "input_type": "tree",
         },
+        {
+            "args": [[0, -3, 9, -10, None, 5]],
+            "expected": True,
+            "name": "valid BST with negatives",
+            "input_type": "tree",
+        },
     ],
     "lowest_common_ancestor": [
         {
@@ -205,6 +217,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "input_type": "tree",
         },
         {"args": [[1], 1], "expected": 1, "name": "single node", "input_type": "tree"},
+        {
+            "args": [[3, 1, 4, None, 2], 4],
+            "expected": 4,
+            "name": "k equals tree size (largest)",
+            "input_type": "tree",
+        },
     ],
     "build_tree_from_traversals": [
         {

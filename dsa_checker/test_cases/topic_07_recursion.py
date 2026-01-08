@@ -104,6 +104,18 @@ TOPIC_07_TESTS: TestCasesDict = {
             "compare": "set_of_tuples",
         },
         {"args": [[2], 1], "expected": [], "name": "impossible"},
+        {
+            "args": [[3], 9],
+            "expected": [[3, 3, 3]],
+            "name": "single candidate multiple uses",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[5], 5],
+            "expected": [[5]],
+            "name": "single candidate equals target",
+            "compare": "set_of_tuples",
+        },
     ],
     "letter_combinations": [
         {
@@ -145,9 +157,36 @@ TOPIC_07_TESTS: TestCasesDict = {
             "expected": False,
             "name": "cannot reuse",
         },
+        {
+            "args": [[["A"]], "A"],
+            "expected": True,
+            "name": "single cell found",
+        },
+        {
+            "args": [[["A"]], "B"],
+            "expected": False,
+            "name": "single cell not found",
+        },
+        {
+            "args": [[["A", "B"], ["C", "D"]], "ABDC"],
+            "expected": True,
+            "name": "path around grid",
+        },
     ],
     "n_queens": [
         {"args": [1], "expected": [["Q"]], "name": "n=1", "compare": "set_of_tuples"},
+        {
+            "args": [2],
+            "expected": [],
+            "name": "n=2 no solution",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [3],
+            "expected": [],
+            "name": "n=3 no solution",
+            "compare": "set_of_tuples",
+        },
         {
             "args": [4],
             "expected": [

@@ -103,6 +103,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "negative numbers",
             "compare": "median_finder",
         },
+        {
+            "args": [[5, 5, 5, 5]],
+            "expected": 5.0,
+            "name": "all duplicates",
+            "compare": "median_finder",
+        },
     ],
     "k_closest_points": [
         {
@@ -129,6 +135,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "single point",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[[-1, -2], [1, 2], [0, 0]], 2],
+            "expected": [[0, 0], [-1, -2]],
+            "name": "with negatives and origin",
+            "compare": "set_of_tuples",
+        },
     ],
     "reorganize_string": [
         {
@@ -145,6 +157,13 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "equal counts",
             "compare": "reorganized",
         },
+        {"args": ["aa"], "expected": "", "name": "two same chars impossible"},
+        {
+            "args": ["vvvlo"],
+            "expected": "vlvov",
+            "name": "three same chars possible",
+            "compare": "reorganized",
+        },
     ],
     "task_scheduler": [
         {"args": [["A", "A", "A", "B", "B", "B"], 2], "expected": 8, "name": "n=2"},
@@ -157,6 +176,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "args": [["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2],
             "expected": 16,
             "name": "many A's",
+        },
+        {"args": [["A"], 2], "expected": 1, "name": "single task"},
+        {
+            "args": [["A", "B", "C", "D", "E", "F"], 2],
+            "expected": 6,
+            "name": "many types no idle needed",
         },
     ],
     "last_stone_weight": [
