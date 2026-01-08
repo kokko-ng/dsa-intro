@@ -1,7 +1,3 @@
 # Core dependencies
-jupyter>=1.0.0
-notebook>=7.0.0
-ipykernel>=6.0.0
-
-# Display & formatting
-ipython>=8.0.0
+notebook>=7.5.1
+ipykernel>=7.1.0

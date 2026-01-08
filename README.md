@@ -113,7 +113,5 @@ from data_structures import GraphNode, create_adjacency_list
 
 ## Requirements
 
-- jupyter >= 1.0.0
-- notebook >= 7.0.0
-- ipykernel >= 6.0.0
-- ipython >= 8.0.0
+- notebook >= 7.5.1
+- ipykernel >= 7.1.0
