@@ -136,6 +136,7 @@ TOPIC_02_TESTS: TestCasesDict = {
         {"args": ["91283472332"], "expected": 2147483647, "name": "overflow"},
         {"args": ["+1"], "expected": 1, "name": "positive sign"},
         {"args": ["+-12"], "expected": 0, "name": "invalid signs"},
+        {"args": ["0"], "expected": 0, "name": "zero"},
     ],
     "move_zeroes": [
         {

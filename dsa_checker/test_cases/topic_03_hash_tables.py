@@ -86,6 +86,9 @@ TOPIC_03_TESTS: TestCasesDict = {
         {"args": ["a", "dog"], "expected": True, "name": "single word"},
         {"args": ["abc", "dog cat fish"], "expected": True, "name": "all different"},
         {"args": ["ab", "dog"], "expected": False, "name": "length mismatch"},
+        {"args": ["", ""], "expected": True, "name": "empty pattern and string"},
+        {"args": ["a", ""], "expected": False, "name": "pattern with empty string"},
+        {"args": ["", "dog"], "expected": False, "name": "empty pattern with word"},
     ],
     "longest_consecutive": [
         {"args": [[100, 4, 200, 1, 3, 2]], "expected": 4, "name": "basic sequence"},
