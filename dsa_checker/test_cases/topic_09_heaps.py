@@ -143,7 +143,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "compare": "set_of_tuples",
         },
         {
-            "args": [[[-1, -2], [1, 2], [0, 0]], 2],
+            "args": [[[-1, -2], [2, 3], [0, 0]], 2],
             "expected": [[0, 0], [-1, -2]],
             "name": "with negatives and origin",
             "compare": "set_of_tuples",
@@ -177,6 +177,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "three same chars possible",
             "compare": "reorganized",
         },
+        {"args": [""], "expected": "", "name": "empty string"},
     ],
     "task_scheduler": [
         {"args": [["A", "A", "A", "B", "B", "B"], 2], "expected": 8, "name": "n=2"},
@@ -197,6 +198,7 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "many types no idle needed",
         },
         {"args": [["A", "A", "A"], 2], "expected": 7, "name": "all identical tasks"},
+        {"args": [[], 2], "expected": 0, "name": "empty tasks"},
     ],
     "last_stone_weight": [
         {"args": [[2, 7, 4, 1, 8, 1]], "expected": 1, "name": "basic case"},

@@ -45,6 +45,12 @@ TOPIC_07_TESTS: TestCasesDict = {
             "name": "two elements",
             "compare": "set_of_tuples",
         },
+        {
+            "args": [[-1, 0, 1]],
+            "expected": [[], [-1], [0], [-1, 0], [1], [-1, 1], [0, 1], [-1, 0, 1]],
+            "name": "with negatives and zero",
+            "compare": "set_of_tuples",
+        },
     ],
     "permutations": [
         {
@@ -76,6 +82,12 @@ TOPIC_07_TESTS: TestCasesDict = {
             "args": [[]],
             "expected": [[]],
             "name": "empty array",
+            "compare": "set_of_tuples",
+        },
+        {
+            "args": [[-1, 0]],
+            "expected": [[-1, 0], [0, -1]],
+            "name": "with negative and zero",
             "compare": "set_of_tuples",
         },
     ],
@@ -114,6 +126,13 @@ TOPIC_07_TESTS: TestCasesDict = {
             "args": [[5], 5],
             "expected": [[5]],
             "name": "single candidate equals target",
+            "compare": "set_of_tuples",
+        },
+        {"args": [[], 7], "expected": [], "name": "empty candidates"},
+        {
+            "args": [[2, 3], 0],
+            "expected": [[]],
+            "name": "zero target",
             "compare": "set_of_tuples",
         },
     ],
@@ -194,6 +213,11 @@ TOPIC_07_TESTS: TestCasesDict = {
             "args": [[["A", "B"], ["C", "D"]], "ABDC"],
             "expected": True,
             "name": "path around grid",
+        },
+        {
+            "args": [[["A", "B"], ["C", "D"]], "ABCDE"],
+            "expected": False,
+            "name": "word longer than grid cells",
         },
     ],
     "n_queens": [

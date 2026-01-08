@@ -26,6 +26,12 @@ TOPIC_08_TESTS: TestCasesDict = {
             "name": "left heavy",
             "input_type": "tree",
         },
+        {
+            "args": [[1, 2, None, 3, None, 4]],
+            "expected": 4,
+            "name": "left skewed",
+            "input_type": "tree",
+        },
     ],
     "invert_tree": [
         {
