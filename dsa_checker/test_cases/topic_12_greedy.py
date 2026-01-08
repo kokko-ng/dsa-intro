@@ -14,6 +14,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[1, 0, 1, 0]], "expected": False, "name": "stuck in middle"},
         {"args": [[0, 1]], "expected": False, "name": "zero at start blocks"},
         {"args": [[5, 0, 0, 0, 0, 1]], "expected": True, "name": "large first jump"},
+        {"args": [[]], "expected": True, "name": "empty array"},
     ],
     "jump_game_ii": [
         {"args": [[2, 3, 1, 1, 4]], "expected": 2, "name": "basic case"},
@@ -23,6 +24,7 @@ TOPIC_12_TESTS: TestCasesDict = {
         {"args": [[1, 1, 1, 1]], "expected": 3, "name": "all ones"},
         {"args": [[10, 1, 1, 1, 1]], "expected": 1, "name": "reach end in one jump"},
         {"args": [[2, 1]], "expected": 1, "name": "exactly reach end"},
+        {"args": [[]], "expected": 0, "name": "empty array"},
     ],
     "gas_station": [
         {

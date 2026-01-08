@@ -183,6 +183,13 @@ TOPIC_05_TESTS: TestCasesDict = {
             "input_type": "linked_list",
             "output_type": "node_val",
         },
+        {
+            "args": [[]],
+            "expected": None,
+            "name": "empty list",
+            "input_type": "linked_list",
+            "output_type": "node_val",
+        },
     ],
     "is_palindrome_list": [
         {

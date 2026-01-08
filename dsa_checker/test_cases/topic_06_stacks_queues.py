@@ -127,6 +127,15 @@ TOPIC_06_TESTS: TestCasesDict = {
             "name": "duplicate min values",
             "compare": "stack_ops",
         },
+        {
+            "args": [
+                ["push", "push", "push", "getMin", "pop", "getMin"],
+                [[-5], [-10], [-3], [], [], []],
+            ],
+            "expected": [None, None, None, -10, None, -5],
+            "name": "only negative numbers",
+            "compare": "stack_ops",
+        },
     ],
     "implement_queue_with_stacks": [
         {

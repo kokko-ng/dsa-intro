@@ -79,6 +79,12 @@ TOPIC_09_TESTS: TestCasesDict = {
             "name": "with negatives",
             "compare": "set",
         },
+        {
+            "args": [[1, 2, 3, 4], 2],
+            "expected": [1, 2],
+            "name": "all same frequency",
+            "compare": "set",
+        },
     ],
     "find_median": [
         {
