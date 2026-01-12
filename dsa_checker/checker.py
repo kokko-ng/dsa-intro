@@ -5,6 +5,7 @@ DSA Checker - Standalone test runner for DSA exercises.
 from __future__ import annotations
 
 from collections.abc import Callable
+from copy import deepcopy
 
 from .test_cases import TEST_CASES
 from .types import TestCase
@@ -618,7 +619,9 @@ def check(func: Callable[..., object]) -> dict[str, object]:
                     ]
                 compare_expected = test["expected"]
             else:
-                transformed_args = _transform_input(list(test["args"]), input_type)
+                transformed_args = _transform_input(
+                    deepcopy(list(test["args"])), input_type
+                )
                 result = func(*transformed_args)
                 # Transform result and expected for comparison
                 compare_result = _transform_result(result, output_type)
